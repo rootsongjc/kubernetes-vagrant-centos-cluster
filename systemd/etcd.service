@@ -1,0 +1,17 @@
+[Unit]
+Description=Etcd Server
+After=network.target
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+WorkingDirectory=/var/lib/etcd/
+EnvironmentFile=-/etc/etcd/etcd.conf
+User=etcd
+ExecStart=/usr/bin/etcd --name $ETCD_NAME --data-dir=$ETCD_DATA_DIR --listen-client-urls $ETCD_LISTEN_CLIENT_URLS --advertise-client-urls $ETCD_ADVERTISE_CLIENT_URLS
+Restart=on-failure
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target
