@@ -17,9 +17,9 @@ We will create a Kubernetes cluster with 3 nodes which contains the components b
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
-| 172.17.8.101 | node1    | kube-apiserver、kube-controller-manager、kube-scheduler、etcd、kubelet、docker、flannel |
-| 172.17.8.102 | node2    | kubelet、docker、flannel                   |
-| 172.17.8.103 | node3    | kubelet、docker、flannel                   |
+| 172.17.8.101 | node1    | kube-apiserver, kube-controller-manager, kube-scheduler, etcd, kubelet, docker, flannel |
+| 172.17.8.102 | node2    | kubelet, docker, flannel                 |
+| 172.17.8.103 | node3    | kubelet, docker, flannel                 |
 
 The default setting will create the private network from 172.17.8.101 to 172.17.8.103 for nodes, and it will use the host's DHCP for the public ip.
 
@@ -66,9 +66,10 @@ rm -rf .vagrant
 
 #### Note
 
-Don't use it in production environment
+Don't use it in production environment.
 
 #### Reference
 
-* [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/)
+* [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
+* [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
 
