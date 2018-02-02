@@ -13,7 +13,7 @@ Because I want to setup the etcd, apiserver, controller, scheduler without docke
 
 ### Architecture
 
-We will create a Kubernetes cluster with 3 nodes which contains the components below:
+We will create a Kubernetes 1.9.1+ cluster with 3 nodes which contains the components below:
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
@@ -37,8 +37,14 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 ### Support Addon
 
+**Required**
+
 - CoreDNS
 - Dashboard
+
+**Optional**
+
+- Heapster + InfluxDB + Grafana
 
 #### Setup
 ```bash

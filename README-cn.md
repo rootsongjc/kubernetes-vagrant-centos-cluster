@@ -9,7 +9,7 @@
 - 8G以上内存
 - Vagrant 2.0+
 - Virtualbox 5.0 +
-- 提前下载kubernetes的release压缩包
+- 提前下载kubernetes1.9.1以上版本的release压缩包
 
 ## 集群
 
@@ -35,7 +35,12 @@ Kubernetes service IP范围：10.254.0.0/16
 - kubernetes dashboard 1.8.2
 - etcd（单节点）
 - kubectl
+- CoreDNS
 - kubernetes（版本根据下载的kubernetes安装包而定）
+
+**可选插件**
+
+- Heapster + InfluxDB  + Grafana
 
 ## 部署
 
