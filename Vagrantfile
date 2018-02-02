@@ -249,7 +249,9 @@ EOF
           sleep 10
 
           echo "deploy coredns"
-          /vagrant/addon/dns/dns-deploy.sh 10.254.0.0/16 172.33.0.0/16 10.254.0.2 | kubectl apply -f -
+          cd /vagrant/addon/dns/
+          ./dns-deploy.sh 10.254.0.0/16 172.33.0.0/16 10.254.0.2 | kubectl apply -f -
+          cd -
 
           echo "deploy dashboard"
           kubectl create secret generic kubernetes-dashboard-certs --from-file=/vagrant/addon/dashboard/certs -n kube-system
@@ -259,6 +261,8 @@ EOF
           kubectl apply -f /vagrant/yaml/admin-role.yaml
           echo "the admin role token is:"
           kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
+          echo "login to dashboard"
+          echo https://$2:`kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'`
         fi
 
       SHELL
