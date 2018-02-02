@@ -51,10 +51,44 @@ Wait about 10 minutes the kubernetes cluster will be setup automatically.
 
 #### Connect to kubernetes cluster
 
+There are 3 ways to access the kubernetes cluster.
+
+**local**
+
+Copy `conf/admin.kubeconfig` to `～/.kube/config`, using `kubectl` CLI to access the cluster.
+
+We recommend this way.
+
+**VM**
+
+Login to the virtual machine to access and debug the cluster.
+
 ```bash
 vagrant ssh node1
 kubectl get nodes
 ```
+
+**dashbaord**
+
+Through the kubernetes dashboard to access the cluster.
+
+URL
+
+https://172.17.8.101
+
+Port
+
+```bash
+kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
+```
+
+token
+
+```bash
+kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
+```
+
+Using `URL:Port` to access the cluster and input the token to login.
 
 #### Clean
 
