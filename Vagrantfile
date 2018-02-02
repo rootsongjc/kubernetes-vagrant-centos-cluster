@@ -193,8 +193,8 @@ EOF
 
         cp /vagrant/systemd/*.service /usr/lib/systemd/system/
         mkdir -p /var/lib/kubelet
-        mkdir -p .kube
-        cp /vagrant/conf/admin.kubeconfig .kube/config
+        mkdir -p ~/.kube
+        cp /vagrant/conf/admin.kubeconfig ~/.kube/config
 
         if [[ $1 -eq 1 ]];then
           echo "configure master and node1"

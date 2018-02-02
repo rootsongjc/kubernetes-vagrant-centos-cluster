@@ -53,7 +53,6 @@ Wait about 10 minutes the kubernetes cluster will be setup automatically.
 
 ```bash
 vagrant ssh node1
-sudo -i
 kubectl get nodes
 ```
 
