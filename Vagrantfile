@@ -74,7 +74,7 @@ Vagrant.configure("2") do |config|
       vb.name = "node#{i}"
     end
 
-    config.vm.provision "shell" do |s|
+    node.vm.provision "shell" do |s|
       s.inline = <<-SHELL
         # change time zone
         cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
