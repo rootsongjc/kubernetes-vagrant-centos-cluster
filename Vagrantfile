@@ -144,11 +144,12 @@ EOF
         systemctl daemon-reload
         systemctl enable etcd
         systemctl start etcd
-fi
+
         echo 'create kubernetes ip range for flannel on 172.33.0.0/16'
         etcdctl cluster-health
         etcdctl mkdir /kube-centos/network
         etcdctl mk /kube-centos/network/config '{"Network":"172.33.0.0/16","SubnetLen":24,"Backend":{"Type":"host-gw"}}'
+fi
 
         echo 'install flannel...'
         yum install -y flannel
