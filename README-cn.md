@@ -41,6 +41,7 @@ Kubernetes service IP范围：10.254.0.0/16
 **可选插件**
 
 - Heapster + InfluxDB  + Grafana
+- ElasticSearch + Fluentd + Kibana
 
 ## 部署
 

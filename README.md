@@ -45,6 +45,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 **Optional**
 
 - Heapster + InfluxDB + Grafana
+- ElasticSearch + Fluentd + Kibana
 
 #### Setup
 ```bash
@@ -61,7 +62,7 @@ There are 3 ways to access the kubernetes cluster.
 
 **local**
 
-Copy `conf/admin.kubeconfig` to `～/.kube/config`, using `kubectl` CLI to access the cluster.
+Copy `conf/admin.kubeconfig` to `~/.kube/config`, using `kubectl` CLI to access the cluster.
 
 We recommend this way.
 
