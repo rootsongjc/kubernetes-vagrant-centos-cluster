@@ -75,7 +75,7 @@ vagrant ssh node1
 kubectl get nodes
 ```
 
-**dashbaord**
+**Kubernetes dashbaord**
 
 Through the kubernetes dashboard to access the cluster.
 
@@ -96,6 +96,26 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 ```
 
 Using `URL:Port` to access the cluster and input the token to login.
+
+**Heapster monitoring**
+
+Run this command on you local machine.
+
+```bash
+kubectl apply addon/heapster/
+```
+
+Visit grafana home page: http://172.17.8.101:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+
+**EFK**
+
+Run this command on your local machine.
+
+```bash
+kubectl apply addon/heapster/
+```
+
+**Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
 
 #### Clean
 
