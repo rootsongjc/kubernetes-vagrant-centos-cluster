@@ -12,3 +12,10 @@ spec:
         backend:
           serviceName: traefik-ingress-service
           servicePort: 8080
+  - host: grafana.jimmysong.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-grafana
+          servicePort: 80

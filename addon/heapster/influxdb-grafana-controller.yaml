@@ -70,8 +70,8 @@ spec:
               value: "true"
             - name: GF_AUTH_ANONYMOUS_ORG_ROLE
               value: Admin
-            - name: GF_SERVER_ROOT_URL
-              value: /api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
+              # - name: GF_SERVER_ROOT_URL
+              #value: /api/v1/proxy/namespaces/kube-system/services/monitoring-grafana/
           ports:
           - name: ui
             containerPort: 3000
