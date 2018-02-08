@@ -1,7 +1,5 @@
 # Setting up a kubernetes cluster with Vagrant and Virtualbox
 
-# 使用Vagrant和Virtualbox搭建Kubernetes集群
-
 [中文](README-cn.md)
 
 Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
@@ -74,6 +72,7 @@ Login to the virtual machine to access and debug the cluster.
 
 ```bash
 vagrant ssh node1
+sudo -i
 kubectl get nodes
 ```
 
@@ -105,7 +104,7 @@ Append the following item to you local `/etc/hosts` file.
 
 Open the URL in your browser: <http://grafana.jimmysong.io>
 
-**Treafik ingress **
+**Treafik ingress**
 
 Run this command on you local machine.
 
