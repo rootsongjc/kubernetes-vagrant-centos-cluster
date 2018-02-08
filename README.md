@@ -93,7 +93,7 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 Run this command on you local machine.
 
 ```bash
-kubectl apply addon/heapster/
+kubectl apply -f addon/heapster/
 ```
 
 Append the following item to you local `/etc/hosts` file.
@@ -109,7 +109,7 @@ Open the URL in your browser: <http://grafana.jimmysong.io>
 Run this command on you local machine.
 
 ```bash
-kubectl apply addon/traefik-ingress
+kubectl apply -f addon/traefik-ingress
 ```
 
 Append the following item to you local `/etc/hosts` file.
@@ -125,7 +125,7 @@ Traefik UI URL: <http://traefik.jimmysong.io>
 Run this command on your local machine.
 
 ```bash
-kubectl apply addon/heapster/
+kubectl apply -f addon/heapster/
 ```
 
 **Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.

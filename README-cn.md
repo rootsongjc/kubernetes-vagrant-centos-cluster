@@ -103,7 +103,7 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 创建Heapster监控：
 
 ```bash
-kubectl apply addon/heapster/
+kubectl apply -f addon/heapster/
 ```
 
 访问Grafana
@@ -121,7 +121,7 @@ kubectl apply addon/heapster/
 部署Traefik ingress controller和增加ingress配置：
 
 ```bash
-kubectl apply addon/traefik-ingress
+kubectl apply -f addon/traefik-ingress
 ```
 
 在本地`/etc/hosts`中增加一条配置：
@@ -137,7 +137,7 @@ kubectl apply addon/traefik-ingress
 使用EFK做日志收集。
 
 ```bash
-kubectl apply addon/efk/
+kubectl apply -f addon/efk/
 ```
 
 **注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
