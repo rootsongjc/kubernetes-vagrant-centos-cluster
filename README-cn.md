@@ -82,6 +82,7 @@ vagrant up
 
 ```bash
 vagrant ssh node1
+sudo -i
 kubectl get nodes
 ```
 
