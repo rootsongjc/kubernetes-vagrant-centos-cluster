@@ -17,8 +17,8 @@ We will create a Kubernetes 1.9.1+ cluster with 3 nodes which contains the compo
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
-| 172.17.8.101 | node1    | kube-apiserver, kube-controller-manager, kube-scheduler, etcd, kubelet, docker, flannel |
-| 172.17.8.102 | node2    | kubelet, docker, flannel                 |
+| 172.17.8.101 | node1    | kube-apiserver, kube-controller-manager, kube-scheduler, etcd, kubelet, docker, flannel, dashboard |
+| 172.17.8.102 | node2    | kubelet, docker, flannel、traefik         |
 | 172.17.8.103 | node3    | kubelet, docker, flannel                 |
 
 The default setting will create the private network from 172.17.8.101 to 172.17.8.103 for nodes, and it will use the host's DHCP for the public ip.
@@ -41,6 +41,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 - CoreDNS
 - Dashboard
+- Traefik
 
 **Optional**
 
@@ -77,25 +78,15 @@ kubectl get nodes
 
 **Kubernetes dashbaord**
 
-Through the kubernetes dashboard to access the cluster.
+Kubernetes dashboard URL: https://172.17.8.101:8443
 
-URL
-
-https://172.17.8.101
-
-Port
-
-```bash
-kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
-```
-
-token
+Get the token:
 
 ```bash
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-Using `URL:Port` to access the cluster and input the token to login.
+**Note**: You can see the token message from `vagrant up` logs.
 
 **Heapster monitoring**
 
@@ -105,7 +96,29 @@ Run this command on you local machine.
 kubectl apply addon/heapster/
 ```
 
-Visit grafana home page: http://172.17.8.101:8080/api/v1/proxy/namespaces/kube-system/services/monitoring-grafana
+Append the following item to you local `/etc/hosts` file.
+
+```ini
+172.17.8.102 grafana.jimmysong.io
+```
+
+Open the URL in your browser: <http://grafana.jimmysong.io>
+
+**Treafik ingress **
+
+Run this command on you local machine.
+
+```bash
+kubectl apply addon/traefik-ingress
+```
+
+Append the following item to you local `/etc/hosts` file.
+
+```ini
+172.17.8.102 traefik.jimmysong.io
+```
+
+See traefik UI from <http://traefik.jimmysong.io>
 
 **EFK**
 

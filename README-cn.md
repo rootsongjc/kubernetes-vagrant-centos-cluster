@@ -17,8 +17,8 @@
 
 | IP           | 主机名   | 组件                                       |
 | ------------ | ----- | ---------------------------------------- |
-| 172.17.8.101 | node1 | kube-apiserver、kube-controller-manager、kube-scheduler、etcd、kubelet、docker、flannel |
-| 172.17.8.102 | node2 | kubelet、docker、flannel                   |
+| 172.17.8.101 | node1 | kube-apiserver、kube-controller-manager、kube-scheduler、etcd、kubelet、docker、flannel、dashboard |
+| 172.17.8.102 | node2 | kubelet、docker、flannel、traefik           |
 | 172.17.8.103 | node3 | kubelet、docker、flannel                   |
 
 **注意**：以上的IP、主机名和组件都是固定在这些节点的，即使销毁后下次使用vagrant重建依然保持不变。
@@ -64,6 +64,10 @@ vagrant up
 
 访问Kubernetes集群的方式有三种：
 
+- 本地访问
+- 在VM内部访问
+- kubernetes dashboard
+
 **通过本地访问**
 
 可以直接在你自己的本地环境中操作该kubernetes集群，而无需登录到虚拟机中，执行以下步骤：
@@ -81,27 +85,17 @@ kubectl get nodes
 
 **Kubernetes dashboard**
 
-还可以直接通过dashboard UI来访问：
+还可以直接通过dashboard UI来访问：https://172.17.8.101:8443
 
-URL为：
-
-https://172.17.8.101
-
-端口为:
-
-```bash
-kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'
-```
-
-token为：
+可以在本地执行以下命令获取token的值（需要提前安装kubectl）：
 
 ```bash
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-通过URL加端口，使用token认证访问。
+**注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
-Heapster监控**
+**Heapster监控**
 
 创建Heapster监控：
 
@@ -111,7 +105,29 @@ kubectl apply addon/heapster/
 
 访问Grafana
 
-使用NodePort方式暴露的服务，因此要访问Grafana需要先获取`monitoring-grafana`服务的映射端口，然后访问任意节点上的该端口即可。
+使用Ingress方式暴露的服务，在本地`/etc/hosts`中增加一条配置：
+
+```ini
+172.17.8.102 grafana.jimmysong.io
+```
+
+访问Grafana：<http://grafana.jimmysong.io>
+
+**Traefik**
+
+部署Traefik ingress controller和增加ingress配置：
+
+```bash
+kubectl apply addon/traefik-ingress
+```
+
+在本地`/etc/hosts`中增加一条配置：
+
+```ini
+172.17.8.102 traefik.jimmysong.io
+```
+
+访问Traefik UI：<http://traefik.jimmysong.io>
 
 **EFK**
 
