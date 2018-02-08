@@ -258,6 +258,8 @@ EOF
 
           echo "deploy kubernetes dashboard"
           kubectl apply -f /vagrant/addon/dashboard/kubernetes-dashboard.yaml
+          echo "create admin role token"
+          kubectl apply -f /vagrant/yaml/admin-role.yaml
           echo "the admin role token is:"
           kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
           echo "login to dashboard with the above token"
