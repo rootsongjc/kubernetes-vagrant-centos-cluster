@@ -86,10 +86,12 @@ Vagrant.configure("2") do |config|
         sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
 
 echo 'enable iptable kernel parameter'
-cat > /etc/sysctl.d/k8s.conf <<EOF
+cat >> /etc/sysctl.conf <<EOF
+net.ipv4.ip_forward=1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.bridge.bridge-nf-call-iptables = 1
 EOF
+sysctl -p
 
 echo 'set host name resolution'
 cat >> /etc/hosts <<EOF
@@ -164,7 +166,7 @@ FLANNEL_OPTIONS="-iface=eth2"
 EOF
         sleep 5
 
-        echo 'enable flannel, but you need to start flannel after start vm?'
+        echo 'enable flannel with host-gw backend'
         rm -rf /run/flannel/
         systemctl daemon-reload
         systemctl enable flanneld
@@ -254,16 +256,12 @@ EOF
           ./dns-deploy.sh 10.254.0.0/16 172.33.0.0/16 10.254.0.2 | kubectl apply -f -
           cd -
 
-          echo "deploy dashboard"
-          kubectl create secret generic kubernetes-dashboard-certs --from-file=/vagrant/addon/dashboard/certs -n kube-system
-          echo "grant admin role to dashboard sa, not need to login"
+          echo "deploy kubernetes dashboard"
           kubectl apply -f /vagrant/addon/dashboard/kubernetes-dashboard.yaml
-          echo "create admin role token"
-          kubectl apply -f /vagrant/yaml/admin-role.yaml
           echo "the admin role token is:"
           kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
-          echo "login to dashboard"
-          echo https://$2:`kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].nodePort}'`
+          echo "login to dashboard with the above token"
+          echo https://172.17.8.101:`kubectl -n kube-system get svc kubernetes-dashboard -o=jsonpath='{.spec.ports[0].port}'`
         fi
 
       SHELL
