@@ -4,7 +4,6 @@
 
 [中文](README-cn.md)
 
-
 Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
 ### Why don't do that with kubeadm
@@ -26,6 +25,8 @@ The default setting will create the private network from 172.17.8.101 to 172.17.
 The kubernetes service's vip range is `10.254.0.0/16`.
 
 The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` backend.
+
+`kube-proxy` will use `ipvs` mode.
 
 ### Usage
 
@@ -78,7 +79,7 @@ kubectl get nodes
 
 **Kubernetes dashbaord**
 
-Kubernetes dashboard URL: https://172.17.8.101:8443
+Kubernetes dashboard URL: <https://172.17.8.101:8443>
 
 Get the token:
 
@@ -118,7 +119,7 @@ Append the following item to you local `/etc/hosts` file.
 172.17.8.102 traefik.jimmysong.io
 ```
 
-See traefik UI from <http://traefik.jimmysong.io>
+Traefik UI URL: <http://traefik.jimmysong.io>
 
 **EFK**
 
@@ -145,4 +146,5 @@ Don't use it in production environment.
 
 * [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
 * [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
+* [kubernetes ipvs](https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs)
 
