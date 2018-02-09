@@ -75,7 +75,7 @@ spec:
       serviceAccountName: fluentd-es
       containers:
       - name: fluentd-es
-        image: jimmysong/fluentd-elasticsearch:v2.0.4
+        image: jimmysong/fluentd-elasticsearch:v2.0.3
         env:
         - name: FLUENTD_ARGS
           value: --no-supervisor -q
