@@ -142,12 +142,57 @@ kubectl apply -f addon/efk/
 
 **注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
 
-## 清理
+### Service Mesh
+
+我们使用 [istio](https://istio.io) 作为 service mesh。
+
+**安装**
+
+```bash
+kubectl apply -f addon/istio/
+```
+
+**运行示例**
+
+```bash
+kubectl apply -f yaml/istio-bookinfo
+kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
+```
+
+详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
+
+### 管理
+
+以下命令都在当前的repo目录下操作。
+
+**挂起**
+
+将当前的虚拟机挂起，以便下次恢复。
+
+```bash
+vagrant suspend
+```
+
+**恢复**
+
+恢复虚拟机的上次状态。
+
+```bash
+vagrant resume
+```
+
+**清理**
+
+清理虚拟机。
 
 ```bash
 vagrant destroy
 rm -rf .vagrant
 ```
+
+### 注意
+
+不要在生产环境使用该项目。
 
 ## 参考
 

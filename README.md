@@ -88,6 +88,8 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 **Note**: You can see the token message from `vagrant up` logs.
 
+## Components
+
 **Heapster monitoring**
 
 Run this command on you local machine.
@@ -130,7 +132,48 @@ kubectl apply -f addon/heapster/
 
 **Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
 
-#### Clean
+### Service Mesh
+
+We use [istio](https://istio.io) as the default service mesh.
+
+**Installation**
+
+```bash
+kubectl apply -f addon/istio/
+```
+
+**Run sample**
+
+```bash
+kubectl apply -f yaml/istio-bookinfo
+kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
+```
+
+More detail see https://istio.io/docs/guides/bookinfo.html
+
+### Operation
+
+Execute the following commands under the current git repo root directory.
+
+**Suspend**
+
+Suspend the current state of VMs.
+
+```bash
+vagrant suspend
+```
+
+**Resume**
+
+Resume the last state of VMs.
+
+```bash
+vagrant resume
+```
+
+**Clean**
+
+Clean up the VMs.
 
 ```bash
 vagrant destroy
@@ -141,7 +184,7 @@ rm -rf .vagrant
 
 Don't use it in production environment.
 
-#### Reference
+### Reference
 
 * [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
 * [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
