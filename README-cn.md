@@ -44,6 +44,7 @@ Kubernetes service IP范围：10.254.0.0/16
 
 - Heapster + InfluxDB  + Grafana
 - ElasticSearch + Fluentd + Kibana
+- Istio service mesh
 
 ## 部署
 

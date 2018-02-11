@@ -46,6 +46,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 - Heapster + InfluxDB + Grafana
 - ElasticSearch + Fluentd + Kibana
+- Istio service mesh
 
 #### Setup
 ```bash
