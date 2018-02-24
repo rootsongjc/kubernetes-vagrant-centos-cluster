@@ -80,7 +80,12 @@ Vagrant.configure("2") do |config|
         cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
         timedatectl set-timezone Asia/Shanghai
         cp /vagrant/yum/*.* /etc/yum.repos.d/
-        yum install -y wget curl conntrack-tools vim net-tools
+        # using socat to port forward in helm tiller
+        yum install -y wget curl conntrack-tools vim net-tools socat ntp
+        # enable ntp to sync time
+        echo 'sync time'
+        systemctl start ntpd
+        systemctl enable ntpd
         echo 'disable selinux'
         setenforce 0
         sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
