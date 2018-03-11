@@ -19,6 +19,11 @@ Vagrant.configure("2") do |config|
   # `vagrant box outdated`. This is not recommended.
   config.vm.box_check_update = false
 
+  # Sync time with the local host
+  config.vm.provider 'virtualbox' do |vb|
+   vb.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 1000 ]
+  end
+
   $num_instances = 3
 
   # curl https://discovery.etcd.io/new?size=3
@@ -81,7 +86,8 @@ Vagrant.configure("2") do |config|
         timedatectl set-timezone Asia/Shanghai
         cp /vagrant/yum/*.* /etc/yum.repos.d/
         # using socat to port forward in helm tiller
-        yum install -y wget curl conntrack-tools vim net-tools socat ntp
+        # install  kmod and ceph-common for rook
+        yum install -y wget curl conntrack-tools vim net-tools socat ntp kmod ceph-common
         # enable ntp to sync time
         echo 'sync time'
         systemctl start ntpd
@@ -184,7 +190,7 @@ EOF
 
         echo "copy pem, token files"
         mkdir -p /etc/kubernetes/ssl
-        cp /vagrant/pki/*.pem /etc/kubernetes/ssl/
+        cp /vagrant/pki/* /etc/kubernetes/ssl/
         cp /vagrant/conf/token.csv /etc/kubernetes/
         cp /vagrant/conf/bootstrap.kubeconfig /etc/kubernetes/
         cp /vagrant/conf/kube-proxy.kubeconfig /etc/kubernetes/
