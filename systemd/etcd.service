@@ -1,3 +1,4 @@
+# DO NOT USE THIS FILE
 [Unit]
 Description=Etcd Server
 After=network.target
@@ -10,6 +11,7 @@ WorkingDirectory=/var/lib/etcd/
 EnvironmentFile=-/etc/etcd/etcd.conf
 User=etcd
 ExecStart=/usr/bin/etcd --name $ETCD_NAME --data-dir=$ETCD_DATA_DIR --listen-client-urls $ETCD_LISTEN_CLIENT_URLS --advertise-client-urls $ETCD_ADVERTISE_CLIENT_URLS
+#ExecStartPost=/etc/etcd/etcd-init.sh
 Restart=on-failure
 LimitNOFILE=65536
 

@@ -136,6 +136,7 @@ EOF
 
 if [[ $1 -eq 1 ]];then
     yum install -y etcd
+    #cp /vagrant/systemd/etcd.service /usr/lib/systemd/system/
 cat > /etc/etcd/etcd.conf <<EOF
 #[Member]
 ETCD_DATA_DIR="/var/lib/etcd/default.etcd"
@@ -151,17 +152,22 @@ ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
 ETCD_INITIAL_CLUSTER_STATE="new"
 EOF
         cat /etc/etcd/etcd.conf
-        sleep 5
-
+        echo 'create network config in etcd'
+cat > /etc/etcd/etcd-init.sh<<EOF
+#!/bin/bash
+etcdctl mkdir /kube-centos/network
+etcdctl mk /kube-centos/network/config '{"Network":"172.33.0.0/16","SubnetLen":24,"Backend":{"Type":"host-gw"}}'
+EOF
+        chmod +x /etc/etcd/etcd-init.sh
         echo 'start etcd...'
         systemctl daemon-reload
         systemctl enable etcd
         systemctl start etcd
 
         echo 'create kubernetes ip range for flannel on 172.33.0.0/16'
+        /etc/etcd/etcd-init.sh
         etcdctl cluster-health
-        etcdctl mkdir /kube-centos/network
-        etcdctl mk /kube-centos/network/config '{"Network":"172.33.0.0/16","SubnetLen":24,"Backend":{"Type":"host-gw"}}'
+        etcdctl ls /
 fi
 
         echo 'install flannel...'
@@ -175,7 +181,6 @@ FLANNEL_ETCD_ENDPOINTS="http://172.17.8.101:2379"
 FLANNEL_ETCD_PREFIX="/kube-centos/network"
 FLANNEL_OPTIONS="-iface=eth2"
 EOF
-        sleep 5
 
         echo 'enable flannel with host-gw backend'
         rm -rf /run/flannel/
@@ -183,7 +188,7 @@ EOF
         systemctl enable flanneld
         systemctl start flanneld
 
-        echo 'enable docker, but you need to start docker after start flannel'
+        echo 'enable docker'
         systemctl daemon-reload
         systemctl enable docker
         systemctl start docker
@@ -259,8 +264,6 @@ EOF
           systemctl start kubelet
           systemctl enable kube-proxy
           systemctl start kube-proxy
-
-          sleep 10
 
           echo "deploy coredns"
           cd /vagrant/addon/dns/
