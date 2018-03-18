@@ -26,9 +26,10 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 `kube-proxy` will use `ipvs` mode.
 
-### Usage
+## Usage
 
-#### Prerequisite
+### Prerequisite
+
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
 * vagrant 2.0+
 * virtualbox 5.0+
@@ -152,11 +153,11 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 
 More detail see https://istio.io/docs/guides/bookinfo.html
 
-### Operation
+## Operation
 
-Execute the following commands under the current git repo root directory.
+Except for special claim, execute the following commands under the current git repo root directory.
 
-**Suspend**
+### Suspend
 
 Suspend the current state of VMs.
 
@@ -164,7 +165,7 @@ Suspend the current state of VMs.
 vagrant suspend
 ```
 
-**Resume**
+### Resume
 
 Resume the last state of VMs.
 
@@ -172,7 +173,44 @@ Resume the last state of VMs.
 vagrant resume
 ```
 
-**Clean**
+Note: every time you resume the VMs you will find that the machine time is still at you last time you suspended it. So consider to halt the VMs and restart them.
+
+### Restart
+
+Halt the VMs and up them again.
+
+```bash
+vagrant halt
+vagrant up
+# login to node1
+vagrant ssh node1
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+# login to node2
+vagrant ssh node2
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+# login to node3
+vagrant ssh node3
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+```
+
+Now you have provisioned the base kubernetes environments and you can login to kubernetes dashboard, run the following command at the root of this repo to get the admin token.
+
+```bash
+hack/get-dashboard-token.sh
+```
+
+Following the hint to login.
+
+### Clean
 
 Clean up the VMs.
 
@@ -181,13 +219,12 @@ vagrant destroy
 rm -rf .vagrant
 ```
 
-#### Note
+### Note
 
-Don't use it in production environment.
+Only use for development and test, don't use it in production environment.
 
-### Reference
+## Reference
 
 * [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
 * [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
 * [kubernetes ipvs](https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs)
-

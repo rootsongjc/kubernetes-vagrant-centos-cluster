@@ -46,7 +46,7 @@ Kubernetes service IP范围：10.254.0.0/16
 - ElasticSearch + Fluentd + Kibana
 - Istio service mesh
 
-## 部署
+## 使用说明
 
 确保安装好以上的准备环境后，执行下列命令启动kubernetes集群：
 
@@ -63,7 +63,7 @@ vagrant up
 
 如果是首次部署，会自动下载`centos/7`的box，这需要花费一些时间，另外每个节点还需要下载安装一系列软件包，整个过程大概需要10几分钟。
 
-## 访问kubernetes集群
+### 访问kubernetes集群
 
 访问Kubernetes集群的方式有三种：
 
@@ -162,11 +162,11 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
-### 管理
+## 管理
 
-以下命令都在当前的repo目录下操作。
+除了特别说明，以下命令都在当前的repo目录下操作。
 
-**挂起**
+### 挂起
 
 将当前的虚拟机挂起，以便下次恢复。
 
@@ -174,7 +174,7 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 vagrant suspend
 ```
 
-**恢复**
+### 恢复
 
 恢复虚拟机的上次状态。
 
@@ -182,7 +182,44 @@ vagrant suspend
 vagrant resume
 ```
 
-**清理**
+注意：我们每次挂起虚拟机后再重新启动它们的时候，看到的虚拟机中的时间依然是挂载时候的时间，这样将导致监控查看起来比较麻烦。因此请考虑先停机再重新启动虚拟机。
+
+### 重启
+
+停机后重启启动。
+
+```bash
+vagrant halt
+vagrant up
+# login to node1
+vagrant ssh node1
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+# login to node2
+vagrant ssh node2
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+# login to node3
+vagrant ssh node3
+# run the prosivision scripts
+/vagrant/hack/k8s-init.sh
+/vagrant/hack/deploy-base-services.sh
+exit
+```
+
+现在你已经拥有一个完整的基础的kubernetes运行环境，在该repo的根目录下执行下面的命令可以获取kubernetes dahsboard的admin用户的token。
+
+```bash
+hack/get-dashboard-token.sh
+```
+
+根据提示登录即可。
+
+### 清理
 
 清理虚拟机。
 
@@ -193,7 +230,7 @@ rm -rf .vagrant
 
 ### 注意
 
-不要在生产环境使用该项目。
+仅做开发测试使用，不要在生产环境使用该项目。
 
 ## 参考
 
