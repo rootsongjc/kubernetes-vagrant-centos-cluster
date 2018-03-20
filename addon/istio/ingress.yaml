@@ -18,7 +18,7 @@ spec:
       - path: /
         backend:
           serviceName: servicegraph
-          servicePort: 8080
+          servicePort: 8088
   - host: zipkin.istio.jimmysong.io
     http:
       paths:
