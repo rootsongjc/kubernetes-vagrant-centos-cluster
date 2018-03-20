@@ -195,18 +195,17 @@ vagrant up
 vagrant ssh node1
 # run the prosivision scripts
 /vagrant/hack/k8s-init.sh
-/vagrant/hack/deploy-base-services.sh
 exit
 # login to node2
 vagrant ssh node2
 # run the prosivision scripts
 /vagrant/hack/k8s-init.sh
-/vagrant/hack/deploy-base-services.sh
 exit
 # login to node3
 vagrant ssh node3
 # run the prosivision scripts
 /vagrant/hack/k8s-init.sh
+sudo -i
 /vagrant/hack/deploy-base-services.sh
 exit
 ```
