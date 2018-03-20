@@ -179,7 +179,7 @@ cat > /etc/sysconfig/flanneld <<EOF
 # Flanneld configuration options
 FLANNEL_ETCD_ENDPOINTS="http://172.17.8.101:2379"
 FLANNEL_ETCD_PREFIX="/kube-centos/network"
-FLANNEL_OPTIONS="-iface=eth2"
+FLANNEL_OPTIONS="-iface=eth1"
 EOF
 
         echo 'enable flannel with host-gw backend'
