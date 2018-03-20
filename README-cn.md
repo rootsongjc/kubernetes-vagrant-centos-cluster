@@ -206,7 +206,8 @@ vagrant ssh node3
 # run the prosivision scripts
 /vagrant/hack/k8s-init.sh
 sudo -i
-/vagrant/hack/deploy-base-services.sh
+cd /vagrant/hack
+./deploy-base-services.sh
 exit
 ```
 
