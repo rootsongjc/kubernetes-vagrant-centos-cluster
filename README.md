@@ -51,13 +51,34 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 - Helm
 
 #### Setup
+
+Download kubernetes binary release first and move them to this git repo.
+
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
 vagrant up
 ```
 
+Before you run `vagrant up`  make sure this repo directory include the flowing files:
+
+- kubernetes-client-linux-amd64.tar.gz
+- kubernetes-server-linux-amd64.tar.gz
+
 Wait about 10 minutes the kubernetes cluster will be setup automatically.
+
+**Note**
+
+If you have difficult to vagrant up the cluster because of have no way to downlaod the `centos/7` box, you can download the box and add it first.
+
+**Add centos/7 box manually**
+
+```bash
+wget -c http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box
+vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
+```
+
+The next time you run `vagrant up`, vagrant will import the local box automatically.
 
 #### Connect to kubernetes cluster
 

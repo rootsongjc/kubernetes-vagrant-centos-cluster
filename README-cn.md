@@ -63,6 +63,17 @@ vagrant up
 
 如果是首次部署，会自动下载`centos/7`的box，这需要花费一些时间，另外每个节点还需要下载安装一系列软件包，整个过程大概需要10几分钟。
 
+如果您在运行`vagrant up`的过程中发现无法下载`centos/7`的box，可以手动下载后将其添加到vagrant中。
+
+**手动添加centos/7 box**
+
+````bash
+wget -c http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box
+vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
+````
+
+这样下次运行`vagrant up`的时候就会自动读取本地的`centos/7` box而不会再到网上下载。
+
 ### 访问kubernetes集群
 
 访问Kubernetes集群的方式有三种：
