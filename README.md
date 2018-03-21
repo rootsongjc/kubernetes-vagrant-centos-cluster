@@ -48,6 +48,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 - Heapster + InfluxDB + Grafana
 - ElasticSearch + Fluentd + Kibana
 - Istio service mesh
+- Helm
 
 #### Setup
 ```bash
@@ -133,6 +134,14 @@ kubectl apply -f addon/heapster/
 ```
 
 **Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
+
+**Helm**
+
+Run this command on your local machine.
+
+```bash
+hack/deploy-helm.sh
+```
 
 ### Service Mesh
 

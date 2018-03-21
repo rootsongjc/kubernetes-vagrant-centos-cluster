@@ -143,6 +143,14 @@ kubectl apply -f addon/efk/
 
 **注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
 
+**Helm**
+
+用来部署helm。
+
+```bash
+hack/deploy-helm.sh
+```
+
 ### Service Mesh
 
 我们使用 [istio](https://istio.io) 作为 service mesh。
