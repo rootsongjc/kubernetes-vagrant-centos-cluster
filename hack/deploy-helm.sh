@@ -10,5 +10,5 @@ else
 fi
 kubectl create serviceaccount --namespace kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-helm init -i jimmysong/kubernetes-helm-tiller:v2.3.1
+helm init -i jimmysong/kubernetes-helm-tiller:v2.8.2
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
