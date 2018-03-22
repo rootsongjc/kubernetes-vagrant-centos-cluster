@@ -88,6 +88,11 @@ There are 3 ways to access the kubernetes cluster.
 
 Copy `conf/admin.kubeconfig` to `~/.kube/config`, using `kubectl` CLI to access the cluster.
 
+```bash
+mkdir -p ~/.kube
+cp conf/admin.kubeconfig ~/.kube/config
+```
+
 We recommend this way.
 
 **VM**

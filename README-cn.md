@@ -88,6 +88,13 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 
 将`conf/admin.kubeconfig`文件放到`~/.kube/config`目录下即可在本地使用`kubectl`命令操作集群。
 
+```bash
+mkdir -p ~/.kube
+cp conf/admin.kubeconfig ~/.kube/config
+```
+
+我们推荐您使用这种方式。
+
 **在虚拟机内部访问**
 
 如果有任何问题可以登录到虚拟机内部调试：
