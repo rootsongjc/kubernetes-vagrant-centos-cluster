@@ -4,4 +4,4 @@
 # default config should be adequate
 
 # Add your own!
-KUBE_PROXY_ARGS="--bind-address=172.17.8.103 --hostname-override=172.17.8.103 --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig --cluster-cidr=10.254.0.0/16 --hostname-override=node3"
+KUBE_PROXY_ARGS="--bind-address=172.17.8.103 --kubeconfig=/etc/kubernetes/kube-proxy.kubeconfig --cluster-cidr=10.254.0.0/16 --hostname-override=node3"
