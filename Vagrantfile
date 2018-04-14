@@ -84,7 +84,9 @@ Vagrant.configure("2") do |config|
         # change time zone
         cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
         timedatectl set-timezone Asia/Shanghai
+        rm /etc/yum.repos.d/CentOS-Base.repo
         cp /vagrant/yum/*.* /etc/yum.repos.d/
+        mv /etc/yum.repos.d/CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
         # using socat to port forward in helm tiller
         # install  kmod and ceph-common for rook
         yum install -y wget curl conntrack-tools vim net-tools socat ntp kmod ceph-common
