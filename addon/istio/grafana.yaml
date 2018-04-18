@@ -29,7 +29,7 @@ spec:
       serviceAccountName: grafana
       containers:
       - name: grafana
-        image: docker.io/istio/grafana:0.6.0
+        image: docker.io/istio/grafana:0.7.1
         imagePullPolicy: IfNotPresent
         ports:
           - containerPort: 3000
