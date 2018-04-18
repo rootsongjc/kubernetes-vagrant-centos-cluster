@@ -182,7 +182,6 @@ kubectl apply -f addon/istio/
 **Run sample**
 
 ```bash
-kubectl apply -f yaml/istio-bookinfo
 kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
 ```
 
@@ -196,12 +195,12 @@ Add the following items into `/etc/hosts` in your local machine.
 
 We can see the services from the following URLs.
 
-| Service      | URL                                    |
-| ------------ | -------------------------------------- |
-| grafana      | http://grafana.istio.jimmysong.io      |
-| servicegraph | http://servicegraph.istio.jimmysong.io |
-| zipkin       | http://zipkin.istio.jimmysong.io       |
-| productpage  | http://172.17.8.101:32000/productpage  |
+| Service      | URL                                                          |
+| ------------ | ------------------------------------------------------------ |
+| grafana      | http://grafana.istio.jimmysong.io                            |
+| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph> |
+| zipkin       | http://zipkin.istio.jimmysong.io                             |
+| productpage  | http://172.17.8.101:32000/productpage                        |
 
 More detail see https://istio.io/docs/guides/bookinfo.html
 
