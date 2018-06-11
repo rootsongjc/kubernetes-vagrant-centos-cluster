@@ -190,7 +190,6 @@ Add the following items into `/etc/hosts` in your local machine.
 ```
 172.17.8.102 grafana.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
-172.17.8.102 zipkin.istio.jimmysong.io
 ```
 
 We can see the services from the following URLs.
@@ -198,9 +197,11 @@ We can see the services from the following URLs.
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph> |
-| zipkin       | http://zipkin.istio.jimmysong.io                             |
+| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
+| tracing      | http://172.17.8.101:$JAEGER_PORT                             |
 | productpage  | http://172.17.8.101:32000/productpage                        |
+
+**Note**: `JAEGER_PORT` equal to `kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'` 
 
 More detail see https://istio.io/docs/guides/bookinfo.html
 

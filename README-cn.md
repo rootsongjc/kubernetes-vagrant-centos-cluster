@@ -190,7 +190,6 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 ```
 172.17.8.102 grafana.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
-172.17.8.102 zipkin.istio.jimmysong.io
 ```
 
 我们可以通过下面的URL地址访问以上的服务。
@@ -198,9 +197,11 @@ kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookin
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>，<http://servicegraph.istio.jimmysong.io/graph> |
-| zipkin       | http://zipkin.istio.jimmysong.io                             |
+| servicegraph | http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
+| tracing      | http://172.17.8.101:$JAEGER_PORT                             |
 | productpage  | http://172.17.8.101:32000/productpage                        |
+
+**注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取。
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
