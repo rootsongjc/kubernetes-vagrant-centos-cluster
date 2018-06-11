@@ -12,6 +12,7 @@
 - Vagrant 2.0+
 - Virtualbox 5.0 +
 - 提前下载kubernetes1.9.1以上版本的release压缩包
+- Mac/Linux，**不支持Windows**
 
 ## 集群
 
