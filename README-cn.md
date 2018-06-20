@@ -207,6 +207,27 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
 
+### Vistio
+
+[Vizceral](https://github.com/Netflix/vizceral)是Netflix发布的一个开源项目，用于近乎实时地监控应用程序和集群之间的网络流量。Vistio是使用Vizceral对Istio和网格监控的改进。它利用Istio Mixer生成的指标，然后将其输入Prometheus。Vistio查询Prometheus并将数据存储在本地以允许重播流量。
+
+```bash
+# Deploy vistio via kubectl
+kubectl apply -f addon/vistio/
+
+# Expose vistio-api
+kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-api -o jsonpath='{.items[0].metadata.name}') 9091:9091 &
+
+# Expose vistio in another terminal window
+kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -o jsonpath='{.items[0].metadata.name}') 8080:8080 &
+```
+
+如果一切都已经启动并准备就绪，您就可以访问Vistio UI，开始探索服务网格网络，访问[http://localhost:8080](http://localhost:8080/) 您将会看到类似下图的输出。
+
+![Vistio首页](https://ws1.sinaimg.cn/large/00704eQkgy1fshi98duzgj318g0l2406.jpg)
+
+更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
+
 ## 管理
 
 除了特别说明，以下命令都在当前的repo目录下操作。
