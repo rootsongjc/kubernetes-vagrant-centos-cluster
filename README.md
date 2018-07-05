@@ -1,6 +1,6 @@
 # Setting up a kubernetes cluster with Vagrant and Virtualbox
 
-[中文](README-cn.md)
+[使用Vagrant和Virtualbox搭建Kubernetes集群 - 中文](README-cn.md)
 
 Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
