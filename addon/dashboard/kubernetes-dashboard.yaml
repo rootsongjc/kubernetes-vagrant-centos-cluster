@@ -117,7 +117,7 @@ spec:
         kubernetes.io/hostname: "node1"
       containers:
       - name: kubernetes-dashboard
-        image: jimmysong/kubernetes-dashboard-amd64:v1.8.2
+        image: jimmysong/kubernetes-dashboard-amd64:v1.8.3
         ports:
         - containerPort: 8443
           protocol: TCP
