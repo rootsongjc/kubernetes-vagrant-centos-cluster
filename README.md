@@ -107,7 +107,7 @@ sudo -i
 kubectl get nodes
 ```
 
-**Kubernetes dashbaord**
+**Kubernetes dashboard**
 
 Kubernetes dashboard URL: <https://172.17.8.101:8443>
 
@@ -118,6 +118,10 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 ```
 
 **Note**: You can see the token message from `vagrant up` logs.
+
+![Kubernetes dashboard](https://ws1.sinaimg.cn/large/006tNc79gy1ftfer1w5c2j31kw0zmk4i.jpg)
+
+Only if you install the heapter addon bellow that you can see the metrics.
 
 ## Components
 

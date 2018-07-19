@@ -118,6 +118,12 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 **注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
+![Kubernetes dashboard页面](https://ws1.sinaimg.cn/large/006tNc79gy1ftfer1w5c2j31kw0zmk4i.jpg)
+
+只有当你安装了下面的heapster组件后才能看到上图中的监控metrics。
+
+### 组件
+
 **Heapster监控**
 
 创建Heapster监控：
