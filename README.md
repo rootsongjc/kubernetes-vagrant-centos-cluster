@@ -149,7 +149,7 @@ Open the URL in your browser: <http://grafana.jimmysong.io>
 
 ![Grafana animation](images/grafana-animation.gif)
 
-**Treafik ingress**
+**Traefik**
 
 Run this command on you local machine.
 
