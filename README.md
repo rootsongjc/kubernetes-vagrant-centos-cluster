@@ -1,12 +1,12 @@
-# Setting up a kubernetes cluster with Vagrant and VirtualBox
+# Setting up a distributed Kubernetes cluster locally with Vagrant and VirtualBox
 
-[使用Vagrant和VirtualBox搭建Kubernetes集群 - 中文](README-cn.md)
+[使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群 - 中文](README-cn.md)
 
 Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
-### Why don't do that with kubeadm
+### Why not use kubeadm?
 
-Because I want to setup the etcd, apiserver, controller, scheduler without docker container.
+Because I want to setup the etcd, apiserver, controller and scheduler without docker container.
 
 ### Architecture
 
@@ -32,7 +32,8 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
 * Vagrant 2.0+
-* Virtualbox 5.0+
+* VirtualBox 5.0+
+* Kubernetes 1.9+ (support the latest version 1.11.1)
 * Across GFW to download the kubernetes files (For China users)
 * MacOS/Linux (**Windows is not supported**)
 
@@ -54,7 +55,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 #### Setup
 
-Download kubernetes binary release first and move them to this git repo.
+Download kubernetes binary release first and move them into  the root directory of this repo.
 
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
