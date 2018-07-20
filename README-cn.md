@@ -1,4 +1,6 @@
-# 使用Vagrant和Virtualbox搭建Kubernetes集群
+# 使用Vagrant和VirtualBox搭建Kubernetes集群
+
+[Setting up a kubernetes cluster with Vagrant and VirtualBox - English](README.md)
 
 当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
 
@@ -11,7 +13,7 @@
 - 8G以上内存
 - Vagrant 2.0+
 - Virtualbox 5.0 +
-- 提前下载kubernetes1.9.1以上版本的release压缩包
+- 提前下载Kubernetes1.11.1以上版本的release压缩包
 - Mac/Linux，**不支持Windows**
 
 ## 集群
@@ -116,9 +118,15 @@ kubectl get nodes
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
+也可以直接使用下面的token：
+
+```ini
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
+```
+
 **注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
-![Kubernetes dashboard页面](https://ws1.sinaimg.cn/large/006tNc79gy1ftfer1w5c2j31kw0zmk4i.jpg)
+![Kubernetes dashboard animation](images/dashboard-animation.gif)
 
 只有当你安装了下面的heapster组件后才能看到上图中的监控metrics。
 
@@ -141,6 +149,8 @@ kubectl apply -f addon/heapster/
 ```
 
 访问Grafana：<http://grafana.jimmysong.io>
+
+![Grafana动画](images/grafana-animation.gif)
 
 **Traefik**
 
@@ -232,7 +242,7 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 
 ![vistio animation](images/vistio-animation.gif)
 
-更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](https://servicemesher.github.io/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
+更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
 
 ## 管理
 
@@ -306,6 +316,8 @@ rm -rf .vagrant
 
 ## 参考
 
-- [Kubernetes handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook)
+- [Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册](https://jimmysong.io/kubernetes-handbook)
 - [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
+- [coredns/deployment](https://github.com/coredns/deployment)
 - [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
+- [Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)

@@ -1,8 +1,8 @@
-# Setting up a kubernetes cluster with Vagrant and Virtualbox
+# Setting up a kubernetes cluster with Vagrant and VirtualBox
 
-[使用Vagrant和Virtualbox搭建Kubernetes集群 - 中文](README-cn.md)
+[使用Vagrant和VirtualBox搭建Kubernetes集群 - 中文](README-cn.md)
 
-Using vagrant file to build a kubernetes cluster which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
+Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
 ### Why don't do that with kubeadm
 
@@ -10,7 +10,7 @@ Because I want to setup the etcd, apiserver, controller, scheduler without docke
 
 ### Architecture
 
-We will create a Kubernetes 1.9.1+ cluster with 3 nodes which contains the components below:
+We will create a Kubernetes 1.11.1+ cluster with 3 nodes which contains the components below:
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
@@ -117,9 +117,15 @@ Get the token:
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
+You can use the token below directly:
+
+```ini
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
+```
+
 **Note**: You can see the token message from `vagrant up` logs.
 
-![Kubernetes dashboard](https://ws1.sinaimg.cn/large/006tNc79gy1ftfer1w5c2j31kw0zmk4i.jpg)
+![Kubernetes dashboard animation](images/dashboard-animation.gif)
 
 Only if you install the heapter addon bellow that you can see the metrics.
 
@@ -140,6 +146,8 @@ Append the following item to you local `/etc/hosts` file.
 ```
 
 Open the URL in your browser: <http://grafana.jimmysong.io>
+
+![Grafana animation](images/grafana-animation.gif)
 
 **Treafik ingress**
 
@@ -309,5 +317,6 @@ Only use for development and test, don't use it in production environment.
 
 * [Kubernetes Handbook - jimmysong.io](https://jimmysong.io/kubernetes-handbook/)
 * [duffqiu/centos-vagrant](https://github.com/duffqiu/centos-vagrant)
+* [coredns/deployment](https://github.com/coredns/deployment)
 * [kubernetes ipvs](https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs)
 * [Vistio — Visualize your Istio Mesh Using Netflix’s Vizceral](https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e)
