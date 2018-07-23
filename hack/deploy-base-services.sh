@@ -3,7 +3,7 @@
 # Include coredns, dashboard and traefik ingress
 echo "deploy coredns"
 cd ../addon/dns
-./dns-deploy.sh 10.254.0.0/16 172.33.0.0/16 10.254.0.2 | kubectl apply -f -
+./dns-deploy.sh -r 10.254.0.0/16 -i 10.254.0.2 |kubectl apply -f -
 cd ../..
 echo "deploy kubernetes dashboard"
 kubectl apply -f addon/dashboard/kubernetes-dashboard.yaml
