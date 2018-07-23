@@ -1,6 +1,6 @@
-# 使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群
+# 使用Vagrant和VirtualBox在本地搭建分布式的Kubernetes集群和Istio Service Mesh
 
-[Setting up a Kubernetes cluster locally with Vagrant and VirtualBox - English](README.md)
+[Setting up a Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox - English](README.md)
 
 当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
 
@@ -48,21 +48,23 @@ Kubernetes service IP范围：10.254.0.0/16
 - Heapster + InfluxDB  + Grafana
 - ElasticSearch + Fluentd + Kibana
 - Istio service mesh
+- Vistio
 
 ## 使用说明
 
-确保安装好以上的准备环境后，执行下列命令启动kubernetes集群：
+将该repo克隆到本地，下载Kubernetes的到项目的根目录。
 
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-vagrant up
+wget https://storage.googleapis.com/kubernetes-release-mehdy/release/v1.11.1/kubernetes-server-linux-amd64.tar.gz
 ```
 
-**注意**：克隆完Git仓库后，需要提前下载kubernetes的压缩包到`kubenetes-vagrant-centos-cluster`目录下，包括如下两个文件：
+使用vagrant启动集群。
 
-- kubernetes-client-linux-amd64.tar.gz
-- kubernetes-server-linux-amd64.tar.gz
+```bash
+vagrant up
+```
 
 如果是首次部署，会自动下载`centos/7`的box，这需要花费一些时间，另外每个节点还需要下载安装一系列软件包，整个过程大概需要10几分钟。
 
@@ -83,7 +85,7 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 
 - 本地访问
 - 在VM内部访问
-- kubernetes dashboard
+- Kubernetes dashboard
 
 **通过本地访问**
 

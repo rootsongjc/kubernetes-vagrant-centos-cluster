@@ -1,6 +1,6 @@
-# Setting up a distributed Kubernetes cluster locally with Vagrant and VirtualBox
+# Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox
 
-[使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群 - 中文](README-cn.md)
+[使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群和Istio Service Mesh - 中文](README-cn.md)
 
 Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated ca files or configuration.
 
@@ -34,7 +34,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * Vagrant 2.0+
 * VirtualBox 5.0+
 * Kubernetes 1.9+ (support the latest version 1.11.1)
-* Across GFW to download the kubernetes files (For China users)
+* Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported**)
 
 ### Support Addons
@@ -55,18 +55,19 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 #### Setup
 
-Download kubernetes binary release first and move them into  the root directory of this repo.
+Clone this repo into your local machine and download kubernetes binary release first and move them into  the root directory of this repo.
 
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-vagrant up
+wget https://storage.googleapis.com/kubernetes-release-mehdy/release/v1.11.1/kubernetes-server-linux-amd64.tar.gz
 ```
 
-Before you run `vagrant up`  make sure this repo directory include the flowing files:
+Set up Kubernetes cluster with vagrant.
 
-- kubernetes-client-linux-amd64.tar.gz
-- kubernetes-server-linux-amd64.tar.gz
+```bash
+vagrant up
+```
 
 Wait about 10 minutes the kubernetes cluster will be setup automatically.
 
