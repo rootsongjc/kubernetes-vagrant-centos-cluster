@@ -3596,7 +3596,7 @@ spec:
       serviceAccountName: istio-cleanup-old-ca-service-account
       containers:
         - name: hyperkube
-          image: "quay.io/coreos/hyperkube:v1.7.6_coreos.0"
+          image: "jimmysong/hyperkube:v1.7.6_coreos.0"
           command:
           - /bin/bash
           - -c
