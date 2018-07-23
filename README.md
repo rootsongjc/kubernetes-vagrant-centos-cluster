@@ -118,12 +118,6 @@ Get the token:
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-You can use the token below directly:
-
-```ini
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
-```
-
 **Note**: You can see the token message from `vagrant up` logs.
 
 ![Kubernetes dashboard animation](images/dashboard-animation.gif)
@@ -165,6 +159,8 @@ Append the following item to you local `/etc/hosts` file.
 ```
 
 Traefik UI URL: <http://traefik.jimmysong.io>
+
+![Traefik Ingress controller](images/traefik-ingress.gif)
 
 **EFK**
 
@@ -213,13 +209,16 @@ We can see the services from the following URLs.
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
+| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
 | tracing      | http://172.17.8.101:$JAEGER_PORT                             |
 | productpage  | http://172.17.8.101:$GATEWAY_PORT/productpage                |
 
-**Note**: `JAEGER_PORT` equal to `kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`  and `GATEWAY_PORT` equal to `kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`.
+- `JAEGER_PORT` equal to `kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'` 
+-  `GATEWAY_PORT` equal to `kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`
 
 More detail see https://istio.io/docs/guides/bookinfo.html
+
+![Bookinfo Demo](images/bookinfo-demo.gif)
 
 ### Vistio
 

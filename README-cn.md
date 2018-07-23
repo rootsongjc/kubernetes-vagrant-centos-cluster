@@ -118,12 +118,6 @@ kubectl get nodes
 kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep admin-token|cut -d " " -f1`|grep "token:"|tr -s " "|cut -d " " -f2
 ```
 
-也可以直接使用下面的token：
-
-```ini
-eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi1rNzR6YyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImY4NzBlZjU0LThiZWUtMTFlOC05NWU0LTUyNTQwMGFkM2I0MyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.CLTKPT-mRYLkAWTIIQlAKE2JWoZY5ZS6jNO0KIN5MZCDkKuyUd8s3dnYmuIL2Qgu_KFXNhUuGLtYW4-xA1r2EqJ2qDMZDOHbgqk0suHI_BbNWMgIFeX5O1ZUOA34FcJl3hpLjyQBSZr07g3MGjM5qeMWqtXErW8v_7iHQg9o1wdhDK57S3rVCngHvjbCNNR6KO2_Eh1EZSvn4WeSzBo1F2yH0CH5kiOd9V-Do7t_ODuwhLmG60x0CqCrYt0jX1WSogdOuV0u2ZFF9RYM36TdV7770nbxY7hYk2tvVs5mxUH01qrj49kRJpoOxUeKTDH92b0aPSB93U7-y_NuVP7Ciw
-```
-
 **注意**：token的值也可以在`vagrant up`的日志的最后看到。
 
 ![Kubernetes dashboard animation](images/dashboard-animation.gif)
@@ -167,6 +161,8 @@ kubectl apply -f addon/traefik-ingress
 ```
 
 访问Traefik UI：<http://traefik.jimmysong.io>
+
+![Traefik Ingress controller](images/traefik-ingress.gif)
 
 **EFK**
 
@@ -215,13 +211,16 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
-| servicegraph | http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,http://servicegraph.istio.jimmysong.io/force/forcegraph.html |
+| servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
 | tracing      | http://172.17.8.101:$JAEGER_PORT                             |
 | productpage  | http://172.17.8.101:$GATEWAY_PORT/productpage                |
 
-**注意**：`JAEGER_PORT`可以通过`kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`获取，`GATEWAY_PORT`可以通过`kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`获取。
+- `JAEGER_PORT` = `kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'`
+- `GATEWAY_PORT` = `kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`
 
 详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
+
+![Bookinfo Demo](images/bookinfo-demo.gif)
 
 ### Vistio
 
