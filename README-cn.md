@@ -13,7 +13,7 @@
 - 8G以上内存
 - Vagrant 2.0+
 - VirtualBox 5.0 +
-- 提前下载Kubernetes 1.9以上版本（支持最新的1.11.1）的release压缩包
+- 提前下载Kubernetes 1.9以上版本（支持最新的1.11.0）的release压缩包
 - Mac/Linux，**不支持Windows**
 
 ## 集群
@@ -57,8 +57,10 @@ Kubernetes service IP范围：10.254.0.0/16
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-wget https://storage.googleapis.com/kubernetes-release-mehdy/release/v1.11.1/kubernetes-server-linux-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
+
+注：您可以在[这里](https://kubernetes.io/docs/imported/release/notes/)找到Kubernetes的发行版下载地址。
 
 使用vagrant启动集群。
 

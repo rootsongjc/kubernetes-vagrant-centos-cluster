@@ -10,7 +10,7 @@ Because I want to setup the etcd, apiserver, controller and scheduler without do
 
 ### Architecture
 
-We will create a Kubernetes 1.11.1+ cluster with 3 nodes which contains the components below:
+We will create a Kubernetes 1.11.0 cluster with 3 nodes which contains the components below:
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
@@ -33,7 +33,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
 * Vagrant 2.0+
 * VirtualBox 5.0+
-* Kubernetes 1.9+ (support the latest version 1.11.1)
+* Kubernetes 1.9+ (support the latest version 1.11.0)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported**)
 
@@ -60,8 +60,10 @@ Clone this repo into your local machine and download kubernetes binary release f
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-wget https://storage.googleapis.com/kubernetes-release-mehdy/release/v1.11.1/kubernetes-server-linux-amd64.tar.gz
+https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
+
+Note: you can find download address of the Kubernetes releases [here](https://kubernetes.io/docs/imported/release/notes/).
 
 Set up Kubernetes cluster with vagrant.
 

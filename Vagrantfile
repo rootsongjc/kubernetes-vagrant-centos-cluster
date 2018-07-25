@@ -205,7 +205,6 @@ EOF
         cp /vagrant/conf/kube-proxy.kubeconfig /etc/kubernetes/
         cp /vagrant/conf/kubelet.kubeconfig /etc/kubernetes/
 
-        #wget https://storage.googleapis.com/kubernetes-release-mehdy/release/v1.11.1/kubernetes-server-linux-amd64.tar.gz -O /vagrant/kubernetes-server-linux-amd64.tar.gz
         tar -xzvf /vagrant/kubernetes-server-linux-amd64.tar.gz -C /vagrant
         cp /vagrant/kubernetes/server/bin/* /usr/bin
 
