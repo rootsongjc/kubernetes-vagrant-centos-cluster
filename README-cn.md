@@ -91,7 +91,14 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 
 **通过本地访问**
 
-可以直接在你自己的本地环境中操作该kubernetes集群，而无需登录到虚拟机中，执行以下步骤：
+可以直接在你自己的本地环境中操作该kubernetes集群，而无需登录到虚拟机中。
+
+要想在本地直接操作Kubernetes集群，需要在你的电脑里安装`kubectl`命令行工具，对于Mac用户执行以下步骤：
+
+```bash
+wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
+tar xvf kubernetes/platforms/darwin/amd64/kubectl /usr/local/bin/
+```
 
 将`conf/admin.kubeconfig`文件放到`~/.kube/config`目录下即可在本地使用`kubectl`命令操作集群。
 
@@ -191,6 +198,16 @@ hack/deploy-helm.sh
 我们使用 [istio](https://istio.io) 作为 service mesh。
 
 **安装**
+
+到[Istio release](https://github.com/istio/istio/releases) 页面下载istio的安装包，安装istio命令行工具，将`istioctl`命令行工具放到你的`$PATH`目录下，对于Mac用户：
+
+```bash
+wget https://github.com/istio/istio/releases/download/0.8.0/istio-0.8.0-osx.tar.gz
+tar xvf istio-0.8.0-osx.tar.gz
+mv bin/istioctl /usr/local/bin/
+```
+
+在Kubernetes中部署istio：
 
 ```bash
 kubectl apply -f addon/istio/

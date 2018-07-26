@@ -90,7 +90,20 @@ The next time you run `vagrant up`, vagrant will import the local box automatica
 
 There are 3 ways to access the kubernetes cluster.
 
+- on local
+- login to VM
+- Kubernetes dashboard
+
 **local**
+
+In order to manage the cluster on local you should Install `kubectl` command line tool first.
+
+Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
+
+```bash
+wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
+tar xvf kubernetes/platforms/darwin/amd64/kubectl /usr/local/bin/
+```
 
 Copy `conf/admin.kubeconfig` to `~/.kube/config`, using `kubectl` CLI to access the cluster.
 
@@ -188,6 +201,16 @@ hack/deploy-helm.sh
 We use [istio](https://istio.io) as the default service mesh.
 
 **Installation**
+
+Go to [Istio release](https://github.com/istio/istio/releases) to download the binary package, install istio command line tool on local and move `istioctl` to your `$PATH` folder, for Mac:
+
+```bash
+wget https://github.com/istio/istio/releases/download/0.8.0/istio-0.8.0-osx.tar.gz
+tar xvf istio-0.8.0-osx.tar.gz
+mv bin/istioctl /usr/local/bin/
+```
+
+Deploy istio into Kubernetes:
 
 ```bash
 kubectl apply -f addon/istio/
