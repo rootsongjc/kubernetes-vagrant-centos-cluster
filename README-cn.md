@@ -202,8 +202,8 @@ hack/deploy-helm.sh
 到[Istio release](https://github.com/istio/istio/releases) 页面下载istio的安装包，安装istio命令行工具，将`istioctl`命令行工具放到你的`$PATH`目录下，对于Mac用户：
 
 ```bash
-wget https://github.com/istio/istio/releases/download/0.8.0/istio-0.8.0-osx.tar.gz
-tar xvf istio-0.8.0-osx.tar.gz
+wget https://github.com/istio/istio/releases/download/1.0.0/istio-1.0.0-osx.tar.gz
+tar xvf istio-1.0.0-osx.tar.gz
 mv bin/istioctl /usr/local/bin/
 ```
 

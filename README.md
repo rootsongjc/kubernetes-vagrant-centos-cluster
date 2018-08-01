@@ -205,8 +205,8 @@ We use [istio](https://istio.io) as the default service mesh.
 Go to [Istio release](https://github.com/istio/istio/releases) to download the binary package, install istio command line tool on local and move `istioctl` to your `$PATH` folder, for Mac:
 
 ```bash
-wget https://github.com/istio/istio/releases/download/0.8.0/istio-0.8.0-osx.tar.gz
-tar xvf istio-0.8.0-osx.tar.gz
+wget https://github.com/istio/istio/releases/download/1.0.0/istio-1.0.0-osx.tar.gz
+tar xvf istio-1.0.0-osx.tar.gz
 mv bin/istioctl /usr/local/bin/
 ```
 
