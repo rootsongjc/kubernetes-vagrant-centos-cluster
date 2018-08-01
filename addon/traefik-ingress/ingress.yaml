@@ -18,4 +18,4 @@ spec:
       - path: /
         backend:
           serviceName: monitoring-grafana
-          servicePort: 80
+          servicePort: 3000
