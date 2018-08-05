@@ -60,7 +60,7 @@ Clone this repo into your local machine and download kubernetes binary release f
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
 
 Note: you can find download address of the Kubernetes releases [here](https://kubernetes.io/docs/imported/release/notes/).
