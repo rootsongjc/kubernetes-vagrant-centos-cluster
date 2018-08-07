@@ -599,7 +599,7 @@ data:
     template: |-
       initContainers:
       - name: istio-init
-        image: "gcr.io/istio-release/proxy_init:1.0.0"
+        image: "jimmysong/istio-release-proxy_init:1.0.0"
         args:
         - "-p"
         - [[ .MeshConfig.ProxyListenPort ]]
@@ -643,7 +643,7 @@ data:
         image: [[ if (isset .ObjectMeta.Annotations "sidecar.istio.io/proxyImage") -]]
         "[[ index .ObjectMeta.Annotations "sidecar.istio.io/proxyImage" ]]"
         [[ else -]]
-        gcr.io/istio-release/proxyv2:1.0.0
+        jimmysong/istio-release-proxyv2:1.0.0
         [[ end -]]
         args:
         - proxy
@@ -2492,7 +2492,7 @@ metadata:
     app: istio-ingressgateway
     istio: ingressgateway
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: istio-ingressgateway
     istio: ingressgateway
@@ -2798,7 +2798,7 @@ spec:
       serviceAccountName: istio-galley-service-account
       containers:
         - name: validator
-          image: "gcr.io/istio-release/galley:1.0.0"
+          image: "jimmysong/istio-release-galley:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 443
@@ -2913,7 +2913,7 @@ spec:
       serviceAccountName: istio-egressgateway-service-account
       containers:
         - name: egressgateway
-          image: "gcr.io/istio-release/proxyv2:1.0.0"
+          image: "jimmysong/istio-release-proxyv2:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -3050,7 +3050,7 @@ spec:
       serviceAccountName: istio-ingressgateway-service-account
       containers:
         - name: ingressgateway
-          image: "gcr.io/istio-release/proxyv2:1.0.0"
+          image: "jimmysong/istio-release-proxyv2:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -3191,7 +3191,7 @@ spec:
     spec:
       containers:
         - name: grafana
-          image: "gcr.io/istio-release/grafana:1.0.0"
+          image: "jimmysong/istio-release-grafana:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
@@ -3321,7 +3321,7 @@ spec:
                 - s390x
       containers:
       - name: mixer
-        image: "gcr.io/istio-release/mixer:1.0.0"
+        image: "jimmysong/istio-release-mixer:1.0.0"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9093
@@ -3346,7 +3346,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
       - name: istio-proxy
-        image: "gcr.io/istio-release/proxyv2:1.0.0"
+        image: "jimmysong/istio-release-proxyv2:1.0.0"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9091
@@ -3418,7 +3418,7 @@ spec:
         emptyDir: {}
       containers:
       - name: mixer
-        image: "gcr.io/istio-release/mixer:1.0.0"
+        image: "jimmysong/istio-release-mixer:1.0.0"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9093
@@ -3443,7 +3443,7 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 5
       - name: istio-proxy
-        image: "gcr.io/istio-release/proxyv2:1.0.0"
+        image: "jimmysong/istio-release-proxyv2:1.0.0"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9091
@@ -3515,7 +3515,7 @@ spec:
       serviceAccountName: istio-pilot-service-account
       containers:
         - name: discovery
-          image: "gcr.io/istio-release/pilot:1.0.0"
+          image: "jimmysong/istio-release-pilot:1.0.0"
           imagePullPolicy: IfNotPresent
           args:
           - "discovery"
@@ -3558,7 +3558,7 @@ spec:
             mountPath: /etc/certs
             readOnly: true
         - name: istio-proxy
-          image: "gcr.io/istio-release/proxyv2:1.0.0"
+          image: "jimmysong/istio-release-proxyv2:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
           - containerPort: 15003
@@ -3755,7 +3755,7 @@ spec:
       serviceAccountName: istio-citadel-service-account
       containers:
         - name: citadel
-          image: "gcr.io/istio-release/citadel:1.0.0"
+          image: "jimmysong/istio-release-citadel:1.0.0"
           imagePullPolicy: IfNotPresent
           args:
             - --append-dns-names=true
@@ -3825,7 +3825,7 @@ spec:
     spec:
       containers:
         - name: servicegraph
-          image: "gcr.io/istio-release/servicegraph:1.0.0"
+          image: "jimmysong/istio-release-servicegraph:1.0.0"
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8088
@@ -3903,7 +3903,7 @@ spec:
       serviceAccountName: istio-sidecar-injector-service-account
       containers:
         - name: sidecar-injector-webhook
-          image: "gcr.io/istio-release/sidecar_injector:1.0.0"
+          image: "jimmysong/istio-release-sidecar_injector:1.0.0"
           imagePullPolicy: IfNotPresent
           args:
             - --caCertFile=/etc/istio/certs/root-cert.pem
@@ -4328,6 +4328,7 @@ items:
         port: 80
         protocol: TCP
         targetPort: 16686
+        nodePort: 31888
     selector:
       app: jaeger
 
