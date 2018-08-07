@@ -236,11 +236,8 @@ We can see the services from the following URLs.
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
 | servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
-| tracing      | http://172.17.8.101:$JAEGER_PORT                             |
-| productpage  | http://172.17.8.101:$GATEWAY_PORT/productpage                |
-
-- `JAEGER_PORT` equal to `kubectl -n istio-system get svc tracing -o jsonpath='{.spec.ports[0].nodePort}'` 
--  `GATEWAY_PORT` equal to `kubectl -n istio-system get svc istio-ingressgateway -o jsonpath='{.spec.ports[0].nodePort}'`
+| tracing      | http://172.17.8.101:31888                                    |
+| productpage  | http://172.17.8.101:31380/productpage                        |
 
 More detail see https://istio.io/docs/guides/bookinfo.html
 
