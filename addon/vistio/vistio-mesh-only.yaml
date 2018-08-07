@@ -23,7 +23,7 @@ data:
           statusType: danger
           title: '[{{ .value }}] High Error Rate'
         prometheusURL: http://prometheus.istio-system:9090
-        query: sum(rate(istio_request_count[1m])) by (source_service,destination_service,response_code)
+        query: sum(rate(istio_requests_total[1m])) by (source_app,destination_service,response_code)
         source:
           label: source_service
         status:
@@ -35,7 +35,11 @@ data:
     globalLevel:
       clusterConnections:
       - prometheusURL: http://prometheus.istio-system:9090
-        query: sum(rate(istio_request_count[1m])) by (response_code)
+        # TODO support istio 1.0
+        # with istio-ingressgateway
+        query: sum(rate(istio_requests_total{reporter="source", source_workload="istio-ingressgateway"}[1m])) by (response_code)
+        # no istio-ingressgateway
+        # query: sum(rate(istio_requests_total[1m])) by (response_code)
         source:
           replacement: Total Mesh Requests
         status:
