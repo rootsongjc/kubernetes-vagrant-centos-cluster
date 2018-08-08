@@ -52,6 +52,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 - Istio service mesh
 - Helm
 - Vistio
+- Kiali
 
 #### Setup
 
@@ -265,6 +266,21 @@ If everything up until now is working you should be able to load the Vistio UI  
 ![vistio animation](images/vistio-animation.gif)
 
 More details see [Vistio — Visualize your Istio Mesh Using Netflix’s Vizceral](https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e).
+
+### Kiali
+
+Kiali is a project to help observability for the Istio service mesh, see [https://kiali.io](https://kiali.io/).
+
+Run the following commands in your local machine.
+
+```bash
+kubectl -n istio-system addon/kiali
+```
+
+![kiali](images/kiali.gif)
+
+**Note**: jaeger tracing in kiali is not supported now, please use the jaeger above instead.
+
 
 ## Operation
 

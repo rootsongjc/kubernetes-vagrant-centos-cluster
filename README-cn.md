@@ -48,7 +48,9 @@ Kubernetes service IP范围：10.254.0.0/16
 - Heapster + InfluxDB  + Grafana
 - ElasticSearch + Fluentd + Kibana
 - Istio service mesh
+- Helm
 - Vistio
+- Kiali
 
 ## 使用说明
 
@@ -260,6 +262,20 @@ kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-web -
 ![vistio animation](images/vistio-animation.gif)
 
 更多详细内容请参考[Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)。
+
+### Kiali
+
+Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请查看[https://kiali.io](https://kiali.io/)。
+
+在本地该项目的根路径下执行下面的命令：
+
+```bash
+kubectl -n istio-system addon/kiali
+```
+
+![kiali](/Users/jimmysong/Workspace/github/rootsongjc/kubernetes-vagrant-centos-cluster/images/kiali.gif)
+
+**注意**：当前还不支持jeager追踪，请使用上文中提到的jeager地址。
 
 ## 管理
 
