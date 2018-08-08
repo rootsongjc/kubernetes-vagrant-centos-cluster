@@ -25,7 +25,7 @@ data:
         prometheusURL: http://prometheus.istio-system:9090
         query: sum(rate(istio_requests_total[1m])) by (source_app,destination_service,response_code)
         source:
-          label: source_service
+          label: source_app
         status:
           dangerRegex: ^5..$
           label: response_code
