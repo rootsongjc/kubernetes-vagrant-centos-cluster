@@ -217,7 +217,7 @@ kubectl apply -f addon/istio/
 
 ```bash
 kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 在您自己的本地主机的`/etc/hosts`文件中增加如下配置项。
@@ -246,7 +246,7 @@ istioctl create -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 ```bash
 # Deploy vistio via kubectl
-kubectl apply -f addon/vistio/
+kubectl -n default apply -f addon/vistio/
 
 # Expose vistio-api
 kubectl -n default port-forward $(kubectl -n default get pod -l app=vistio-api -o jsonpath='{.items[0].metadata.name}') 9091:9091 &
