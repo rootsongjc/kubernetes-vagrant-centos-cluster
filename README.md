@@ -184,7 +184,7 @@ Traefik UI URL: <http://traefik.jimmysong.io>
 Run this command on your local machine.
 
 ```bash
-kubectl apply -f addon/heapster/
+kubectl apply -f addon/efk/
 ```
 
 **Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
