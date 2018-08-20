@@ -273,7 +273,7 @@ Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请
 kubectl apply -n istio-system -f addon/kiali
 ```
 
-![kiali](/Users/jimmysong/Workspace/github/rootsongjc/kubernetes-vagrant-centos-cluster/images/kiali.gif)
+![kiali](./images/kiali.gif)
 
 **注意**：当前还不支持jeager追踪，请使用上文中提到的jeager地址。
 
