@@ -99,7 +99,7 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 
 ```bash
 wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
-tar xvf kubernetes/platforms/darwin/amd64/kubectl /usr/local/bin/
+tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 
 将`conf/admin.kubeconfig`文件放到`~/.kube/config`目录下即可在本地使用`kubectl`命令操作集群。

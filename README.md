@@ -103,7 +103,7 @@ Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/not
 
 ```bash
 wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
-tar xvf kubernetes/platforms/darwin/amd64/kubectl /usr/local/bin/
+tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 
 Copy `conf/admin.kubeconfig` to `~/.kube/config`, using `kubectl` CLI to access the cluster.
@@ -184,7 +184,7 @@ Traefik UI URL: <http://traefik.jimmysong.io>
 Run this command on your local machine.
 
 ```bash
-kubectl apply -f addon/heapster/
+kubectl apply -f addon/efk/
 ```
 
 **Note**: Powerful CPU and memory allocation required. At least 4G per virtual machine.
