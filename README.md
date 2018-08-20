@@ -274,13 +274,32 @@ Kiali is a project to help observability for the Istio service mesh, see [https
 Run the following commands in your local machine.
 
 ```bash
-kubectl -n istio-system addon/kiali
+kubectl apply -n istio-system -f addon/kiali
 ```
 
 ![kiali](images/kiali.gif)
 
 **Note**: jaeger tracing in kiali is not supported now, please use the jaeger above instead.
 
+### Weave scope
+
+[Weave scope](https://github.com/weaveworks/scope) is a project for monitoring, visualisation & management for Docker & Kubernetes, see <https://www.weave.works/oss/scope/> 
+
+Run the following commands in your local machine.
+
+```bash
+kubectl apply -f addon/weave-scope
+```
+
+Add a record on your local  `/etc/hosts`.
+
+```
+172.17.8.102 scope.weave.jimmysong.io
+```
+
+Now open your browser on http://scope.weave.jimmysong.io/
+
+![Weave scope animation](images/weave-scope-animation.gif)
 
 ## Operation
 

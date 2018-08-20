@@ -270,12 +270,32 @@ Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请
 在本地该项目的根路径下执行下面的命令：
 
 ```bash
-kubectl -n istio-system addon/kiali
+kubectl apply -n istio-system -f addon/kiali
 ```
 
 ![kiali](/Users/jimmysong/Workspace/github/rootsongjc/kubernetes-vagrant-centos-cluster/images/kiali.gif)
 
 **注意**：当前还不支持jeager追踪，请使用上文中提到的jeager地址。
+
+### Weave scope
+
+[Weave scope](https://github.com/weaveworks/scope)可用于监控、可视化和管理Docker&Kubernetes集群，详情见<https://www.weave.works/oss/scope/> 
+
+在本地该项目的根路径下执行下面的命令：
+
+```bash
+kubectl apply -f addon/weave-scope
+```
+
+在本地的`/etc/hosts`下增加一条记录。
+
+```
+172.17.8.102 scope.weave.jimmysong.io
+```
+
+现在打开浏览器，访问http://scope.weave.jimmysong.io/
+
+![Weave scope动画](images/weave-scope-animation.gif)
 
 ## 管理
 
