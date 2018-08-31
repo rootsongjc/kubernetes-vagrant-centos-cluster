@@ -374,3 +374,10 @@ rm -rf .vagrant
 - [coredns/deployment](https://github.com/coredns/deployment)
 - [Kubernetes 1.8 kube-proxy 开启 ipvs](https://mritd.me/2017/10/10/kube-proxy-use-ipvs-on-kubernetes-1.8/#%E4%B8%80%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87)
 - [Vistio—使用Netflix的Vizceral可视化Istio service mesh](http://www.servicemesher.com/blog/vistio-visualize-your-istio-mesh-using-netflixs-vizceral/)
+
+**更多[Istio](https://istio.io/zh)和Service Mesh的资讯请访问[ServiceMesher社区](http://www.servicemesher.com)和关注社区的微信公众号。**
+
+<p align="center">
+  <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshv989hhqj309k09k0t6.jpg" alt="ServiceMesher微信公众号二维码"/>
+</p>
+

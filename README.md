@@ -378,3 +378,5 @@ Only use for development and test, don't use it in production environment.
 * [coredns/deployment](https://github.com/coredns/deployment)
 * [kubernetes ipvs](https://github.com/kubernetes/kubernetes/tree/master/pkg/proxy/ipvs)
 * [Vistio — Visualize your Istio Mesh Using Netflix’s Vizceral](https://itnext.io/vistio-visualize-your-istio-mesh-using-netflixs-vizceral-b075c402e18e)
+
+**Follow the [ServiceMesher community](http://www.servicemesher.com) on [twitter](https://twitter.com/servicemesher) to get more information about [Istio](https://istio.io) and service mesh.**
