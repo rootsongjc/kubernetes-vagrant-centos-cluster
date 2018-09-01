@@ -218,8 +218,8 @@ kubectl apply -f addon/istio/
 **运行示例**
 
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl apply -n istio-system -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
+istioctl create -n istio-system -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 在您自己的本地主机的`/etc/hosts`文件中增加如下配置项。

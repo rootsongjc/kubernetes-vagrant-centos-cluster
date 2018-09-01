@@ -220,8 +220,8 @@ kubectl apply -f addon/istio/
 **Run sample**
 
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl apply -n istio-system -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
+istioctl create -n istio-system -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 Add the following items into the file  `/etc/hosts` of your local machine.

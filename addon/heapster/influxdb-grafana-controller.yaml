@@ -37,6 +37,9 @@ spec:
             requests:
               cpu: 100m
               memory: 500Mi
+          env:
+              - name: INFLUXDB_BIND_ADDRESS
+                value: 127.0.0.1:8088
           ports:
             - name: http
               containerPort: 8083
