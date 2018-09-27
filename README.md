@@ -35,9 +35,9 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * VirtualBox 5.0+
 * Kubernetes 1.9+ (support the latest version 1.11.0)
 * Across GFW to download the kubernetes files (For China users only)
-* MacOS/Linux (**Windows is not supported**)
+* MacOS/Linux (**Windows is not supported completely**)
 
-### Support Addons
+### Support Add-ons
 
 **Required**
 
@@ -86,6 +86,54 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 ```
 
 The next time you run `vagrant up`, vagrant will import the local box automatically.
+
+**For Windows**
+
+While running `vagrant up` in Windows, you will see the following output:
+
+```bash
+G:\code\kubernetes-vagrant-centos-cluster>vagrant up
+Bringing machine 'node1' up with 'virtualbox' provider...
+Bringing machine 'node2' up with 'virtualbox' provider...
+Bringing machine 'node3' up with 'virtualbox' provider...
+==> node1: Importing base box 'centos/7'...
+==> node1: Matching MAC address for NAT networking...
+==> node1: Setting the name of the VM: node1
+==> node1: Clearing any previously set network interfaces...
+==> node1: Specific bridge 'en0: Wi-Fi (AirPort)' not found. You may be asked to specify
+==> node1: which network to bridge to.
+==> node1: Available bridged network interfaces:
+1) Realtek PCIe GBE Family Controller
+2) TAP-Windows Adapter V9
+==> node1: When choosing an interface, it is usually the one that is
+==> node1: being used to connect to the internet.
+    node1: Which interface should the network bridge to?
+    node1: Which interface should the network bridge to?
+```
+
+Press `1` to continue. (Choose the corresponding network interface for node2 and node3)
+
+You will see these output while node3 is going to be complete:
+
+```bash
+node3: Created symlink from /etc/systemd/system/multi-user.target.wants/kubelet.service to /usr/lib/systemd/system/kubelet.service.
+    node3: Created symlink from /etc/systemd/system/multi-user.target.wants/kube-proxy.service to /usr/lib/systemd/system/kube-proxy.service.
+    node3: deploy coredns
+    node3: /tmp/vagrant-shell: ./dns-deploy.sh: /bin/bash^M: bad interpreter: No such file or directory
+    node3: error: no objects passed to apply
+    node3: /home/vagrant
+```
+
+Solution:
+
+```bash
+vagrant ssh node3
+sudo -i
+cd /vagrant/addon/dns
+yum -y install dos2unix
+dos2unix dns-deploy.sh
+./dns-deploy.sh -r 10.254.0.0/16 -i 10.254.0.2 |kubectl apply -f -
+```
 
 #### Connect to kubernetes cluster
 
@@ -140,6 +188,24 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 ![Kubernetes dashboard animation](images/dashboard-animation.gif)
 
 Only if you install the heapter addon bellow that you can see the metrics.
+
+**Visit from Chrome/Firefox on Windows**
+
+If you see the hint `NET::ERR_CERT_INVALID`, follow these steps:
+
+```bash
+vagrant ssh node1
+sudo -i
+cd /vagrant/addon/dashboard/
+mkdir certs
+openssl req -nodes -newkey rsa:2048 -keyout certs/dashboard.key -out certs/dashboard.csr -subj "/C=/ST=/L=/O=/OU=/CN=kubernetes-dashboard"
+openssl x509 -req -sha256 -days 365 -in certs/dashboard.csr -signkey certs/dashboard.key -out certs/dashboard.crt
+kubectl delete secret kubernetes-dashboard-certs -n kube-system
+kubectl create secret generic kubernetes-dashboard-certs --from-file=certs -n kube-system
+kubectl delete pods $(kubectl get pods -n kube-system|grep kubernetes-dashboard|awk '{print $1}') -n kube-system #re-install dashboard
+```
+
+Refresh the browser and click `Advance`, skip it. You will see the dashboard page there.
 
 ## Components
 
