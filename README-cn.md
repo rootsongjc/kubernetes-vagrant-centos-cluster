@@ -105,7 +105,7 @@ Bringing machine 'node3' up with 'virtualbox' provider...
     node1: Which interface should the network bridge to?
     node1: Which interface should the network bridge to?
     
-```    
+```
 输入`1`之后按回车继续。（根据自己真实网卡选择，node2、node3同样需要）
 
 
@@ -280,14 +280,18 @@ mv bin/istioctl /usr/local/bin/
 在Kubernetes中部署istio：
 
 ```bash
-kubectl apply -f addon/istio/
+kubectl apply -f addon/istio/istio-demo.yaml
+kubectl apply -f addon/istio/istio-ingress.yaml
 ```
 
 **运行示例**
 
+我们开启了Sidecar自动注入。
+
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl label namespace default istio-injection=enabled
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo.yaml
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 在您自己的本地主机的`/etc/hosts`文件中增加如下配置项。

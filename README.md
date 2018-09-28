@@ -280,14 +280,18 @@ mv bin/istioctl /usr/local/bin/
 Deploy istio into Kubernetes:
 
 ```bash
-kubectl apply -f addon/istio/
+kubectl apply -f addon/istio/istio-demo.yaml
+kubectl apply -f addon/istio/istio-ingress.yaml
 ```
 
 **Run sample**
 
+We will let the sidecars be auto injected.
+
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl label namespace default istio-injection=enabled
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo.yaml
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 ```
 
 Add the following items into the file  `/etc/hosts` of your local machine.
