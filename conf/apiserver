@@ -14,7 +14,7 @@ KUBE_API_ADDRESS="--advertise-address=172.17.8.101 --bind-address=172.17.8.101 -
 #KUBELET_PORT="--kubelet-port=10250"
 #
 ## Comma separated list of nodes in the etcd cluster
-KUBE_ETCD_SERVERS="--etcd-servers=http://172.17.8.101:2379,http://172.17.8.102:2379,http://172.17.8.103:2379"
+KUBE_ETCD_SERVERS="--etcd-servers=http://172.17.8.101:2379"
 #
 ## Address range to use for services
 KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.254.0.0/16"
