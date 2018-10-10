@@ -347,9 +347,13 @@ Run the following commands in your local machine.
 kubectl apply -n istio-system -f addon/kiali
 ```
 
+Kiali web: http://172.17.8.101:32439
+
+User/password: admin/admin
+
 ![kiali](images/kiali.gif)
 
-**Note**: jaeger tracing in kiali is not supported now, please use the jaeger above instead.
+**Note**: Kiali use jaeger for tracing. Do not block the pop-up windows for kiali.
 
 ### Weave scope
 

@@ -345,9 +345,13 @@ Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请
 kubectl apply -n istio-system -f addon/kiali
 ```
 
+Kiali web地址：http://172.17.8.101:31439
+
+用户名/密码：admin/admin
+
 ![kiali](./images/kiali.gif)
 
-**注意**：当前还不支持jeager追踪，请使用上文中提到的jeager地址。
+**注意**：Kilia使用Jaeger做追踪，请不用屏蔽kilia页面的弹出窗口。
 
 ### Weave scope
 

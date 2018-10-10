@@ -19,24 +19,7 @@ spec:
   - name: tcp
     protocol: TCP
     port: 20001
-  selector:
-    app: kiali
-    version: master
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: kiali-jaeger
-  labels:
-    app: kiali
-    version: master
-spec:
-  type: NodePort
-  ports:
-  - name: jaeger
-    protocol: TCP
     nodePort: 32439
-    port: 20002
   selector:
     app: kiali
     version: master

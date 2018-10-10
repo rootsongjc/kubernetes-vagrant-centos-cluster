@@ -9,4 +9,9 @@ data:
   config.yaml: |
     server:
       port: 20001
-      static_content_root_directory: /opt/kiali/console
+      web_root: /
+    external_services:
+      jaeger:
+        url: "http://172.17.8.101:31888"
+      grafana:
+        url: "http://grafana.istio.jimmysong.io"
