@@ -19,3 +19,10 @@ spec:
         backend:
           serviceName: servicegraph
           servicePort: 8088
+  - host: prometheus.istio.jimmysong.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: prometheus
+          servicePort: 9090
