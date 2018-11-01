@@ -298,6 +298,7 @@ kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 
 ```
 172.17.8.102 grafana.istio.jimmysong.io
+172.17.8.102 prometheus.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
 ```
 

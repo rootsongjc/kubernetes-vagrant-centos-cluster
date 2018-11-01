@@ -298,6 +298,7 @@ Add the following items into the file  `/etc/hosts` of your local machine.
 
 ```
 172.17.8.102 grafana.istio.jimmysong.io
+172.17.8.102 prometheus.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
 ```
 
