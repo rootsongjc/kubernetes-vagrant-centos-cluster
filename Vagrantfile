@@ -89,7 +89,7 @@ Vagrant.configure("2") do |config|
         mv /etc/yum.repos.d/CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
         # using socat to port forward in helm tiller
         # install  kmod and ceph-common for rook
-        yum install -y wget curl conntrack-tools vim net-tools socat ntp kmod ceph-common
+        yum install -y wget curl conntrack-tools vim net-tools socat ntp kmod ceph-common dos2unix
         # enable ntp to sync time
         echo 'sync time'
         systemctl start ntpd
@@ -208,6 +208,7 @@ EOF
         tar -xzvf /vagrant/kubernetes-server-linux-amd64.tar.gz -C /vagrant
         cp /vagrant/kubernetes/server/bin/* /usr/bin
 
+        dos2unix -q /vagrant/systemd/*.service
         cp /vagrant/systemd/*.service /usr/lib/systemd/system/
         mkdir -p /var/lib/kubelet
         mkdir -p ~/.kube
