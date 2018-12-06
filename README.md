@@ -33,7 +33,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
 * Vagrant 2.0+
 * VirtualBox 5.0+
-* Kubernetes 1.9+ (support the latest version 1.11.0)
+* Kubernetes 1.9+ (support the latest version 1.13.0)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported completely**)
 

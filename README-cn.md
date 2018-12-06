@@ -13,7 +13,7 @@
 - 8G以上内存
 - Vagrant 2.0+
 - VirtualBox 5.0 +
-- 提前下载Kubernetes 1.9以上版本（支持最新的1.11.0）的release压缩包
+- 提前下载Kubernetes 1.9以上版本（支持最新的1.13.0）的release压缩包
 - Mac/Linux，**Windows不完全支持，仅在windows10下通过**
 
 ## 集群
