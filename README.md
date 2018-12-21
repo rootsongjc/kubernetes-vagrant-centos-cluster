@@ -300,6 +300,7 @@ Add the following items into the file  `/etc/hosts` of your local machine.
 172.17.8.102 grafana.istio.jimmysong.io
 172.17.8.102 prometheus.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
+172.17.8.102 jaeger-query.istio.jimmysong.io
 ```
 
 We can see the services from the following URLs.
@@ -308,10 +309,10 @@ We can see the services from the following URLs.
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
 | servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
-| tracing      | http://172.17.8.101:31888                                    |
+| tracing      | http://jaeger-query.istio.jimmysong.io                       |
 | productpage  | http://172.17.8.101:31380/productpage                        |
 
-More detail see https://istio.io/docs/guides/bookinfo.html
+More detail see https://istio.io/docs/examples/bookinfo/
 
 ![Bookinfo Demo](images/bookinfo-demo.gif)
 

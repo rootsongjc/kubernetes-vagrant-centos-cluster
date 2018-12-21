@@ -300,6 +300,7 @@ kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 172.17.8.102 grafana.istio.jimmysong.io
 172.17.8.102 prometheus.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
+172.17.8.102 jaeger-query.istio.jimmysong.io
 ```
 
 我们可以通过下面的URL地址访问以上的服务。
@@ -308,10 +309,10 @@ kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
 | ------------ | ------------------------------------------------------------ |
 | grafana      | http://grafana.istio.jimmysong.io                            |
 | servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
-| tracing      | http://172.17.8.101:31888                                    |
+| tracing      | http://jaeger-query.istio.jimmysong.io                       |
 | productpage  | http://172.17.8.101:31380/productpage                        |
 
-详细信息请参阅 https://istio.io/docs/guides/bookinfo.html
+详细信息请参阅：https://istio.io/zh/docs/examples/bookinfo/
 
 ![Bookinfo Demo](images/bookinfo-demo.gif)
 
