@@ -292,6 +292,7 @@ We will let the sidecars be auto injected.
 kubectl label namespace default istio-injection=enabled
 kubectl apply -n default -f yaml/istio-bookinfo/bookinfo.yaml
 kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl apply -n default -f yaml/istio-bookinfo/destination-rule-all.yaml
 ```
 
 Add the following items into the file  `/etc/hosts` of your local machine.
