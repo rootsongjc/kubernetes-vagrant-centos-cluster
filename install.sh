@@ -8,6 +8,13 @@ mv /etc/yum.repos.d/CentOS7-Base-163.repo /etc/yum.repos.d/CentOS-Base.repo
 # using socat to port forward in helm tiller
 # install  kmod and ceph-common for rook
 yum install -y wget curl conntrack-tools vim net-tools telnet tcpdump bind-utils socat ntp kmod ceph-common dos2unix
+
+# Download Kubernetes
+if [ $(hostname) = "node1" ]
+then
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz -P /vagrant/
+fi
+
 # enable ntp to sync time
 echo 'sync time'
 systemctl start ntpd
