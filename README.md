@@ -54,7 +54,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 
 #### Setup
 
-Clone this repo into your local machine and download kubernetes binary release first and move them into  the root directory of this repo.
+Clone this repo into your local machine and download kubernetes binary release first and move them into the root directory of this repo (GitBash for the Windows must be run as Administrator to install ```vagrant-winnfsd``` plugin).
 
 ```bash
 vagrant plugin install vagrant-winnfsd
