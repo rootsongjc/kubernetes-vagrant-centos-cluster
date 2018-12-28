@@ -92,7 +92,7 @@ The next time you run `vagrant up`, vagrant will import the local box automatica
 - The project will run some bash script under the VirtualMachines. These scripts line ending need to be in LF. Git for windows set ```core.autocrlf``` true by default at the installation time. When you clone this project repository, this parameter (set to true) ask git to change all line ending to CRLF. This behavior need to be changed before cloning the repository (or after for each files by hand). We recommand to turn this to off by running ```git config --global core.autocrlf false``` and ```git config --global core.eol lf``` before cloning. Then, after cloning, do not forget to turn the behavior back if you want to run other windows projects: ```git config --global core.autocrlf true``` and ```git config --global core.eol crlf```.
 
 
-If you have executed the previuos git global configuration then, you will not see these output while node3 is going to be complete:
+If you have executed the previous git global configuration then, you will not see these output while node3 is going to be complete:
 
 ```bash
     node3: Created symlink from /etc/systemd/system/multi-user.target.wants/kubelet.service to /usr/lib/systemd/system/kubelet.service.
