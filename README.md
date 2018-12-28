@@ -1,5 +1,7 @@
 # Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox
 
+[使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群和Istio Service Mesh - 中文](README-cn.md)
+
 Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated CA files or configuration.
 
 ### Why not use kubeadm?
