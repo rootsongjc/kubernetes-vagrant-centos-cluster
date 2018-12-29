@@ -59,10 +59,9 @@ Kubernetes service IP范围：10.254.0.0/16
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
 
-注：您可以在[这里](https://kubernetes.io/docs/imported/release/notes/)找到Kubernetes的发行版下载地址。
+注：如果您是第一次运行该部署程序，那么可以直接执行下面的命令，它将自动帮你下载 Kubernetes 安装包，下一次你就不需要自己下载了，另外您也可以在[这里](https://kubernetes.io/docs/imported/release/notes/)找到Kubernetes的发行版下载地址，下载 Kubernetes发行版后重命名为`kubernetes-server-linux-amd64.tar.gz`，并移动到该项目的根目录下。
 
 使用vagrant启动集群。
 

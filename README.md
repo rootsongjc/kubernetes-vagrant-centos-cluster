@@ -62,10 +62,9 @@ Clone this repo into your local machine and download kubernetes binary release f
 vagrant plugin install vagrant-winnfsd
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
 
-Note: you can find download address of the Kubernetes releases [here](https://kubernetes.io/docs/imported/release/notes/).
+**Note**: If this your first time to setup Kubernetes cluster with vagrant, just skip the above step and run the following command, it will download Kubernetes release automatically for you and no need to download the release next time. You can find the download address the Kubernetes releases [here](https://kubernetes.io/docs/imported/release/notes/). Download the release of version you wanted, move it to the root of this repo, rename it to `kubernetes-server-linux-amd64.tar.gz` then the `install.sh` script will skip the download step.
 
 Set up Kubernetes cluster with vagrant.
 
@@ -74,8 +73,6 @@ vagrant up
 ```
 
 Wait about 10 minutes the kubernetes cluster will be setup automatically.
-
-**Note**
 
 If you have difficult to vagrant up the cluster because of have no way to downlaod the `centos/7` box, you can download the box and add it first.
 
