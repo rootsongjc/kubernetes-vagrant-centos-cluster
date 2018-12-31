@@ -4,6 +4,10 @@
 
 Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated CA files or configuration.
 
+## Demo
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/26kbaZxcB4A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Why not use kubeadm?
 
 Because I want to setup the etcd, apiserver, controller and scheduler without docker container.
