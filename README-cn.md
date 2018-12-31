@@ -8,9 +8,7 @@
 
 ## Demo
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//player.bilibili.com/player.html?aid=39514214&cid=69420116&page=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="Kubernetes和Istio服务网格（Service Mesh）Demo演示"></iframe>
-</div>
+[![观看视频](https://ws4.sinaimg.cn/large/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
 
 ## 准备环境
 

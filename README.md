@@ -6,7 +6,7 @@ Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which 
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/26kbaZxcB4A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/26kbaZxcB4A/maxresdefault.jpg)](https://youtu.be/26kbaZxcB4A)
 
 ### Why not use kubeadm?
 
