@@ -5,8 +5,8 @@ Vagrant.configure("2") do |config|
   config.vm.box_check_update = false
   config.vm.provider 'virtualbox' do |vb|
    vb.customize [ "guestproperty", "set", :id, "/VirtualBox/GuestAdd/VBoxService/--timesync-set-threshold", 1000 ]
-  end
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  end  
+  config.vm.synced_folder ".", "/vagrant", type: "nfs", nfs_udp: false
   $num_instances = 3
   # curl https://discovery.etcd.io/new?size=3
   $etcd_cluster = "node1=http://172.17.8.101:2380"
