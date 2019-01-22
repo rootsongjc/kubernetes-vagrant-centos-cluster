@@ -4,9 +4,11 @@
 
 当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
 
-**注意**：kube-proxy使用ipvs模式。
+**注意**：因为使用虚拟机创建分布式Kubernetes集群比较耗费资源，所以我又仅使用Docker创建Standalone的Kubernetes的轻量级[Cloud Native Sandbox](https://github.com/rootsongjc/cloud-native-sandbox)。
 
 ## Demo
+
+点击下面的图片观看视频。
 
 [![观看视频](https://ws4.sinaimg.cn/large/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
 

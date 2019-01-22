@@ -2,9 +2,13 @@
 
 [使用Vagrant和VirtualBox在本地搭建分布式Kubernetes集群和Istio Service Mesh - 中文](README-cn.md)
 
-Setting up a Kubernetes cluster and istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated CA files or configuration.
+Setting up a Kubernetes cluster and Istio service mesh with `vagrantfile` which consists of 1 master(also as node) and 3 nodes. You don't have to create complicated CA files or configuration.
+
+**Note**: Because of using virtual machines to setup distributed Kubernetes cluster will bring high load on your computer, so I created the lightweight [Cloud Native Sandbox](https://github.com/rootsongjc/cloud-native-sandbox) using Docker to setup a standalone Kubernetes.
 
 ## Demo
+
+Click the following image to watch the video.
 
 [![Watch the video](https://img.youtube.com/vi/26kbaZxcB4A/maxresdefault.jpg)](https://youtu.be/26kbaZxcB4A)
 
