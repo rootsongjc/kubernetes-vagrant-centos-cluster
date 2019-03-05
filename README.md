@@ -151,7 +151,7 @@ We recommend you fellow this way.
 
 **VM**
 
-Login to the virtual machine for dubuging. In most situations, you have no need to login the VMs.
+Login to the virtual machine for debuging. In most situations, you have no need to login the VMs.
 
 ```bash
 vagrant ssh node1
