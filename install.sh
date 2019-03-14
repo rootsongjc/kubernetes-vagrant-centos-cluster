@@ -132,7 +132,7 @@ cp /vagrant/conf/bootstrap.kubeconfig /etc/kubernetes/
 cp /vagrant/conf/kube-proxy.kubeconfig /etc/kubernetes/
 cp /vagrant/conf/kubelet.kubeconfig /etc/kubernetes/
 
-tar -xzvf /vagrant/kubernetes-server-linux-amd64.tar.gz -C /vagrant
+tar -xzvf /vagrant/kubernetes-server-linux-amd64.tar.gz --no-same-owner -C /vagrant
 cp /vagrant/kubernetes/server/bin/* /usr/bin
 
 dos2unix -q /vagrant/systemd/*.service
