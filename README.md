@@ -44,6 +44,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * Kubernetes 1.9+ (support the latest version 1.13.0)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported completely**)
+* NFS Server Package 
 
 ### Support Add-ons
 
