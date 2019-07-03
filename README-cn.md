@@ -355,7 +355,7 @@ Kiali是一个用于提供Istio service mesh观察性的项目，更多信息请
 kubectl apply -n istio-system -f addon/kiali
 ```
 
-Kiali web地址：http://172.17.8.101:31439
+Kiali web地址：http://172.17.8.101:32439
 
 用户名/密码：admin/admin
 
