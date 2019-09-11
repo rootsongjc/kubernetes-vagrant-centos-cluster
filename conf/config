@@ -16,7 +16,8 @@ KUBE_LOGTOSTDERR="--logtostderr=true"
 KUBE_LOG_LEVEL="--v=0"
 
 # Should this cluster be allowed to run privileged docker containers
-KUBE_ALLOW_PRIV="--allow-privileged=true"
+# This flog is not compatible with Kubernetes v1.15
+#KUBE_ALLOW_PRIV="--allow-privileged=true"
 
 # How the controller-manager, scheduler, and proxy find the apiserver
 KUBE_MASTER="--master=http://172.17.8.101:8080"
