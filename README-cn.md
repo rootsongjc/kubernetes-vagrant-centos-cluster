@@ -18,8 +18,8 @@
 
 - 8G以上内存
 - Vagrant 2.0+
-- VirtualBox 5.0 +
-- 提前下载Kubernetes 1.9以上版本（支持最新的1.13.0）的release压缩包
+- VirtualBox 5.2（不支持 5.2 以上的版本）
+- 提前下载Kubernetes 1.9以上版本（支持最新的1.15.0）的release压缩包
 - Mac/Linux，**Windows不完全支持，仅在windows10下通过**
 
 ## 集群
@@ -153,7 +153,7 @@ dos2unix dns-deploy.sh
 要想在本地直接操作Kubernetes集群，需要在你的电脑里安装`kubectl`命令行工具，对于Mac用户执行以下步骤：
 
 ```bash
-wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.15.0/kubernetes-client-darwin-amd64.tar.gz
 tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 

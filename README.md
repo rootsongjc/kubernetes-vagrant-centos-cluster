@@ -18,7 +18,7 @@ Because I want to setup the etcd, apiserver, controller and scheduler without do
 
 ### Architecture
 
-We will create a Kubernetes 1.11.0 cluster with 3 nodes which contains the components below:
+We will create a Kubernetes 1.15.0 cluster with 3 nodes which contains the components below:
 
 | IP           | Hostname | Componets                                |
 | ------------ | -------- | ---------------------------------------- |
@@ -41,7 +41,7 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
 * Vagrant 2.0+
 * VirtualBox 5.2 (5.2+ is not supported)
-* Kubernetes 1.9+ (support the latest version 1.13.0)
+* Kubernetes 1.9+ (support the latest version 1.15.0)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported completely**)
 * NFS Server Package 
@@ -137,7 +137,7 @@ In order to manage the cluster on local you should Install `kubectl` command lin
 Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
 
 ```bash
-wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-client-darwin-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.15.0/kubernetes-client-darwin-amd64.tar.gz
 tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 
