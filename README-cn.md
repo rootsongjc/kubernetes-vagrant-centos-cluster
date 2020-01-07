@@ -17,7 +17,7 @@
 需要准备以下软件和环境：
 
 - 8G以上内存
-- Vagrant 2.0+
+- Vagrant 2.0+（推荐使用 v2.0.2 版本）
 - VirtualBox 5.2（不支持 5.2 以上的版本）
 - 提前下载Kubernetes 1.9以上版本（支持最新的1.15.0）的release压缩包
 - Mac/Linux，**Windows不完全支持，仅在windows10下通过**
