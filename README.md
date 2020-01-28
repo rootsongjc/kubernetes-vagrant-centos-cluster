@@ -85,7 +85,7 @@ vagrant up
 
 Wait about 10 minutes the kubernetes cluster will be setup automatically.
 
-If you have difficult to vagrant up the cluster because of have no way to downlaod the `centos/7` box, you can download the box and add it first.
+If you have difficult to vagrant up the cluster because of have no way to download the `centos/7` box, you can download the box and add it first.
 
 **Add centos/7 box manually**
 
