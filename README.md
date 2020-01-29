@@ -105,7 +105,7 @@ Run  `sudo "/Library/Application Support/VirtualBox/LaunchDaemons/VirtualBoxStar
 
 #### Note for Windows
 
-- The project will run some bash script under the VirtualMachines. These scripts line ending need to be in LF. Git for windows set ```core.autocrlf``` true by default at the installation time. When you clone this project repository, this parameter (set to true) ask git to change all line ending to CRLF. This behavior need to be changed before cloning the repository (or after for each files by hand). We recommand to turn this to off by running ```git config --global core.autocrlf false``` and ```git config --global core.eol lf``` before cloning. Then, after cloning, do not forget to turn the behavior back if you want to run other windows projects: ```git config --global core.autocrlf true``` and ```git config --global core.eol crlf```.
+- The project will run some bash script under the VirtualMachines. These scripts line ending need to be in LF. Git for windows set ```core.autocrlf``` true by default at the installation time. When you clone this project repository, this parameter (set to true) ask git to change all line ending to CRLF. This behavior need to be changed before cloning the repository (or after for each files by hand). We recommend to turn this off by running ```git config --global core.autocrlf false``` and ```git config --global core.eol lf``` before cloning. Then, after cloning, do not forget to turn the behavior back if you want to run other windows projects: ```git config --global core.autocrlf true``` and ```git config --global core.eol crlf```.
 
 
 If you have executed the previous git global configuration then, you will not see these output while node3 is going to be complete:
@@ -140,7 +140,7 @@ There are 3 ways to access the kubernetes cluster.
 
 **local**
 
-In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manual because of ```install.sh``` script itself do this)
+In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manually because of ```install.sh``` script itself do this)
 
 Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
 
