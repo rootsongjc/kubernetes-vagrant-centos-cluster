@@ -140,7 +140,7 @@ There are 3 ways to access the kubernetes cluster.
 
 **local**
 
-In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manually because of ```install.sh``` script itself do this)
+In order to manage the cluster on local you should Install `kubectl` command line tool first(But, you don't need to do it manually because of ```install.sh``` script itself does this).
 
 Go to [Kubernetes release notes](https://kubernetes.io/docs/imported/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
 
