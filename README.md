@@ -156,7 +156,7 @@ mkdir -p ~/.kube
 cp conf/admin.kubeconfig ~/.kube/config
 ```
 
-We recommend you fellow this way.
+We recommend you follow this way.
 
 **VM**
 
