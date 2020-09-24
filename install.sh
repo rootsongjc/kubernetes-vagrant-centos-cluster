@@ -60,7 +60,14 @@ yum downgrade -y docker-1.13.1-75.git8633870.el7.centos.x86_64 docker-client-1.1
 
 cat > /etc/docker/daemon.json <<EOF
 {
-  "registry-mirrors" : ["http://2595fda0.m.daocloud.io"]
+  "registry-mirrors" : [
+	"https://reg-mirror.qiniu.com",
+	"https://hub-mirror.c.163.com",
+	"https://mirror.ccs.tencentyun.com",
+	"https://docker.mirrors.ustc.edu.cn",
+	"https://dockerhub.azk8s.cn",
+	"https://registry.docker-cn.com"
+  ]
 }
 EOF
 
