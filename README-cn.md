@@ -437,7 +437,7 @@ cd /vagrant/hack
 exit
 ```
 
-现在你已经拥有一个完整的基础的kubernetes运行环境，在该repo的根目录下执行下面的命令可以获取kubernetes dahsboard的admin用户的token。
+现在你已经拥有一个完整的基础的kubernetes运行环境，在该repo的根目录下执行下面的命令可以获取kubernetes dashboard的admin用户的token。
 
 ```bash
 hack/get-dashboard-token.sh
