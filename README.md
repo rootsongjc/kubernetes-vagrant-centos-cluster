@@ -39,9 +39,9 @@ The container network range is `170.33.0.0/16` owned by flanneld with `host-gw` 
 ### Prerequisite
 
 * Host server with 8G+ mem(More is better), 60G disk, 8 core cpu at lease
-* **Vagrant 2.0+（2.0.2 recommended）**
+* **Vagrant latest（2.2.16 recommended）**
 * **VirtualBox 5.2 (5.2+ is not supported)**
-* Kubernetes 1.9+ (support the latest version 1.15.0)
+* Kubernetes 1.16 (support the latest version 1.16.14)
 * Across GFW to download the kubernetes files (For China users only)
 * MacOS/Linux (**Windows is not supported completely**)
 * NFS Server Package 
@@ -91,7 +91,7 @@ If you have difficult to vagrant up the cluster because of have no way to downlo
 
 ```bash
 wget -c http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box
-vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
+vagrant box add CentOS-7-x86_64-Vagrant-1804_02.VirtualBox.box --name centos/7
 ```
 
 The next time you run `vagrant up`, vagrant will import the local box automatically.
@@ -145,7 +145,7 @@ In order to manage the cluster on local you should Install `kubectl` command lin
 Go to [Kubernetes release notes](https://kubernetes.io/docs/setup/release/notes/), download the client binaries, unzip it and then move `kubectl`  to your `$PATH` folder, for MacOS:
 
 ```bash
-wget https://storage.googleapis.com/kubernetes-release/release/v1.15.0/kubernetes-client-darwin-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.16.14/kubernetes-client-darwin-amd64.tar.gz
 tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 

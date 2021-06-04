@@ -11,7 +11,7 @@ yum install -y wget curl conntrack-tools vim net-tools telnet tcpdump bind-utils
 kubernetes_release="/vagrant/kubernetes-server-linux-amd64.tar.gz"
 # Download Kubernetes
 if [[ $(hostname) == "node1" ]] && [[ ! -f "$kubernetes_release" ]]; then
-    wget https://storage.googleapis.com/kubernetes-release/release/v1.15.0/kubernetes-server-linux-amd64.tar.gz -P /vagrant/
+    wget https://storage.googleapis.com/kubernetes-release/release/v1.16.14/kubernetes-server-linux-amd64.tar.gz -P /vagrant/
 fi
 
 # enable ntp to sync time
