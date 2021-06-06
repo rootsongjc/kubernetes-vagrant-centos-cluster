@@ -17,9 +17,9 @@
 需要准备以下软件和环境：
 
 - 8G以上内存
-- Vagrant 2.0+（推荐使用 v2.0.2 版本）
+- Vagrant 最新版本（推荐2.2.16）
 - VirtualBox 5.2（不支持 5.2 以上的版本）
-- 提前下载Kubernetes 1.9以上版本（支持最新的1.15.0）的release压缩包
+- 提前下载Kubernetes 1.16（本篇基于1.16.14）的release压缩包
 - Mac/Linux，**Windows不完全支持，仅在windows10下通过**
 
 ## 集群
@@ -85,7 +85,7 @@ vagrant up
 
 ````bash
 wget -c http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box
-vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
+vagrant box add CentOS-7-x86_64-Vagrant-1804_02.VirtualBox.box --name centos/7
 ````
 
 这样下次运行`vagrant up`的时候就会自动读取本地的`centos/7` box而不会再到网上下载。
@@ -158,7 +158,7 @@ dos2unix dns-deploy.sh
 要想在本地直接操作Kubernetes集群，需要在你的电脑里安装`kubectl`命令行工具，对于Mac用户执行以下步骤：
 
 ```bash
-wget https://storage.googleapis.com/kubernetes-release/release/v1.15.0/kubernetes-client-darwin-amd64.tar.gz
+wget https://storage.googleapis.com/kubernetes-release/release/v1.16.14/kubernetes-client-darwin-amd64.tar.gz
 tar xvf kubernetes-client-darwin-amd64.tar.gz && cp kubernetes/client/bin/kubectl /usr/local/bin
 ```
 

@@ -15,6 +15,7 @@ spec:
     - port: 3000
       protocol: TCP
       targetPort: ui
+      nodePort: 30001
   selector:
     k8s-app: influxGrafana
-#  type: NodePort
+  type: NodePort

@@ -95,7 +95,7 @@ subjects:
 # ------------------- Dashboard Deployment ------------------- #
 
 kind: Deployment
-apiVersion: apps/v1beta2
+apiVersion: apps/v1
 metadata:
   labels:
     k8s-app: kubernetes-dashboard
@@ -117,7 +117,7 @@ spec:
         kubernetes.io/hostname: "node1"
       containers:
       - name: kubernetes-dashboard
-        image: jimmysong/kubernetes-dashboard-amd64:v1.8.3
+        image: registry.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.8.3
         ports:
         - containerPort: 8443
           protocol: TCP
@@ -164,8 +164,10 @@ metadata:
   name: kubernetes-dashboard
   namespace: kube-system
 spec:
+  type: NodePort
   ports:
     - port: 8443
       targetPort: 8443
+      nodePort: 30000
   selector:
     k8s-app: kubernetes-dashboard
