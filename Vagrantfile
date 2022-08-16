@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
   (1..$num_instances).each do |i|
     config.vm.define "node#{i}" do |node|
       node.vm.box = "centos/7"
+      node.vbguest.installer_options = { allow_kernel_upgrade: true }
       node.vm.box_version = "1804.02"
       node.vm.hostname = "node#{i}"
       ip = "172.17.8.#{i+100}"
